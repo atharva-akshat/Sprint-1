@@ -1,9 +1,20 @@
 package com.womenempowerment.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="admin")
 public class Admin {
+	@Id
+	@Column(length = 4)
 	private int adminId;
+	@Column(length = 10)
 	private	String adminUsername;
+	@Column(length = 10)
 	private	String adminPassword;
+
 }
+
