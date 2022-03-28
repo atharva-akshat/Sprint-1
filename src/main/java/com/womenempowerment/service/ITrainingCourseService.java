@@ -2,7 +2,7 @@ package com.womenempowerment.service;
 
 import java.util.List;
 
-import com.womenempowerment.model.TrainingCourse;
+import com.womenempowerment.entity.TrainingCourse;
 
 public interface ITrainingCourseService  {
 	TrainingCourse addTrainingCourse(TrainingCourse course);

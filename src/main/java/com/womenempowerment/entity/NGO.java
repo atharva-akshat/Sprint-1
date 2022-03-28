@@ -1,4 +1,4 @@
-package com.womenempowerment.model;
+package com.womenempowerment.entity;
 
 public class NGO {
 	private Integer ngoId;

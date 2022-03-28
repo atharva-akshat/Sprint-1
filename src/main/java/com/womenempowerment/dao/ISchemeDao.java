@@ -3,7 +3,7 @@ package com.womenempowerment.dao;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.womenempowerment.model.Scheme;
+import com.womenempowerment.entity.Scheme;
 
 public interface ISchemeDao {
 	Scheme addScheme(Scheme scheme);

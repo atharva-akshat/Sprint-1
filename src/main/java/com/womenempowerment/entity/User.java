@@ -1,4 +1,4 @@
-package com.womenempowerment.model;
+package com.womenempowerment.entity;
 
 public class User {
 	private int loginId;

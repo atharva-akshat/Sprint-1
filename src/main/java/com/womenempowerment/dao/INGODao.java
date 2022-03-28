@@ -2,7 +2,7 @@ package com.womenempowerment.dao;
 
 import java.util.List;
 
-import com.womenempowerment.model.NGO;
+import com.womenempowerment.entity.NGO;
 
 public interface INGODao {
 	NGO addNGO(NGO ngo);

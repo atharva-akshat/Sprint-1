@@ -1,4 +1,4 @@
-package com.womenempowerment.model;
+package com.womenempowerment.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -6,9 +6,7 @@ import java.time.LocalDate;
 @Entity
 public class Trainee {
 
-	@SequenceGenerator(name = "mySeqGen", sequenceName = "mySeq", initialValue = 5, allocationSize = 100)
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "mySeqGen")
 	private Integer traineeId;
 	@Column(length = 25)
 	private String userName;
@@ -29,9 +27,9 @@ public class Trainee {
 	@Column
 	private LocalDate dob;
 
-	//private TrainingCourse trainingCourse;
+	/*private TrainingCourse trainingCourse;
 
-	//private ArrayList<List> feedBack;
+	private ArrayList<List> feedBack;*/
 
 	public Integer getTraineeId() {
 		return traineeId;

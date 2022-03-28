@@ -1,6 +1,6 @@
 package com.womenempowerment.service;
 
-import com.womenempowerment.model.User;
+import com.womenempowerment.entity.User;
 
 public interface IUserService  {
 	User registerUser(User user);

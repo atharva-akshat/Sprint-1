@@ -1,6 +1,6 @@
 package com.womenempowerment.dao;
 
-import com.womenempowerment.model.User;
+import com.womenempowerment.entity.User;
 
 public interface IUserDao {
 	User registerUser(User user);

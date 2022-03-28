@@ -1,6 +1,4 @@
-package com.womenempowerment.model;
-
-import javax.persistence.*;
+package com.womenempowerment.entity;
 
 public class Admin {
 	private int adminId;

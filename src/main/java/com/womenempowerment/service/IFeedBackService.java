@@ -2,7 +2,7 @@ package com.womenempowerment.service;
 
 import java.util.List;
 
-import com.womenempowerment.model.FeedBack;
+import com.womenempowerment.entity.FeedBack;
 
 public interface IFeedBackService {
 	FeedBack addFeedBack(FeedBack feedback);

@@ -2,7 +2,7 @@ package com.womenempowerment.dao;
 
 import java.util.List;
 
-import com.womenempowerment.model.FeedBack;
+import com.womenempowerment.entity.FeedBack;
 
 public interface IFeedBackDao {
 	FeedBack addFeedBack(FeedBack feedback);

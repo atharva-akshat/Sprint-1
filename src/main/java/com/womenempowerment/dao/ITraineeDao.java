@@ -2,7 +2,7 @@ package com.womenempowerment.dao;
 
 import java.util.List;
 
-import com.womenempowerment.model.Trainee;
+import com.womenempowerment.entity.Trainee;
 
 public interface ITraineeDao {
 	Trainee addTrainee(Trainee course);
