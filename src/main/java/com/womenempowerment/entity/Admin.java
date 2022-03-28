@@ -1,4 +1,4 @@
-package com.womenempowerment.model;
+package com.womenempowerment.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
