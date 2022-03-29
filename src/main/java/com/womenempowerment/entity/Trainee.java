@@ -10,7 +10,7 @@ public class Trainee {
 	private Integer traineeId;
 	@Column(length = 25)
 	private String userName;
-	@Column
+	@Column(length = 20)
 	private String password;
 	@Column(length = 50)
 	private String firstName;
@@ -20,16 +20,20 @@ public class Trainee {
 	private long contact;
 	@Column(length = 50)
 	private String email;
-	@Column
+	@Column(length = 100)
 	private String familyInfo;
 	@Column(length = 12)
 	private long aadharNo;
 	@Column
 	private LocalDate dob;
 
-	/*private TrainingCourse trainingCourse;
+	@ManyToOne
+	@JoinColumn(name="trainingCourseId")
+	private TrainingCourse trainingCourse;
 
-	private ArrayList<List> feedBack;*/
+	@ManyToOne
+	@JoinColumn(name="feedBackId")
+	private FeedBack feedBack;
 
 	public Integer getTraineeId() {
 		return traineeId;
@@ -111,11 +115,11 @@ public class Trainee {
 		this.dob = dob;
 	}
 
-/*	public TrainingCourse getTrainingCourse() {
+	public TrainingCourse getTrainingCourse() {
 		return trainingCourse;
 	}
 
 	public void setTrainingCourse(TrainingCourse trainingCourse) {
 		this.trainingCourse = trainingCourse;
-	}*/
+	}
 }

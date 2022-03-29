@@ -1,10 +1,7 @@
 package com.womenempowerment.entity;
 
 import java.time.LocalDate;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="scheme")
@@ -22,8 +19,10 @@ public class Scheme {
 	private String schemeEligibility;
 	@Column(name="objective")
 	private String schemeObjective;
-	
-	//private TrainingCourse training;
+
+	@ManyToOne
+	@JoinColumn(name="trainingCourseId")
+	private TrainingCourse training;
 
 	public Integer getSchemeId() {
 		return schemeId;
@@ -73,12 +72,12 @@ public class Scheme {
 		this.schemeObjective = schemeObjective;
 	}
 
-	/*public TrainingCourse getTraining() {
+	public TrainingCourse getTraining() {
 		return training;
 	}
 
 	public void setTraining(TrainingCourse training) {
 		this.training = training;
-	}*/
+	}
 }
 

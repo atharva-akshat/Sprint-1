@@ -29,16 +29,18 @@ public class FeedBack {
 	@Column(name="feedbackdate")
 	private	LocalDate feedbackdate;
 	
-	//@ManyToOne
-	//@JoinColumn(name="loginId")
+
+	@ManyToOne
+	@JoinColumn(name="loginId")
 	private User user;
 	
-	//@ManyToOne
-	//@JoinColumn(name="trainingCourseId")
+	@ManyToOne
+	@JoinColumn(name="trainingCourseId")
 	private TrainingCourse training;
 	
-	//@ManyToOne
-	//@JoinColumn(name="schemeId")
+	@ManyToOne
+	@JoinColumn(name="schemeId")
+
 	private Scheme scheme;
 
 	public int getFeedBackId() {
@@ -112,6 +114,4 @@ public class FeedBack {
 	public void setScheme(Scheme scheme) {
 		this.scheme = scheme;
 	}
-	
-	
 }

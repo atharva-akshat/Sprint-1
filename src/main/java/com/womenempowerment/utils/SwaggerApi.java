@@ -1,4 +1,4 @@
-package com.swagger;
+package com.womenempowerment.utils;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
