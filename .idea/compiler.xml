@@ -7,7 +7,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="women-empowerment" />
-        <module name="spring-boot-rest-data-jpa" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
