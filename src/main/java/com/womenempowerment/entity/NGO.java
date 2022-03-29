@@ -1,14 +1,17 @@
 package com.womenempowerment.entity;
 
+//import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.*;
 //import javax.persistence.UniqueConstraint;
-
 //import org.hibernate.annotations.GenericGenerator;
 //import org.hibernate.validator.constraints.UniqueElements;
+
+//private TrainingCourse trainingCourse;
 
 @Entity
 @Table(name = "TBL_NGO")
@@ -100,5 +103,12 @@ public class NGO {
 	public void activities(String activities) {
 		this.activities = activities;
 	}
+
+	/*public TrainingCourse getTraining() {
+		return trainingCourse;
+	}
+	public void setTraining(TrainingCourse trainingCourse) {
+		this.trainingCourse = trainingCourse;
+	}*/
 
 }
