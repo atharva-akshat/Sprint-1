@@ -14,9 +14,9 @@ public class TrainingCourseController {
     @Autowired
     ITrainingCourseService service;
 
-    @PostMapping("/add")
-    public String addCourse(@RequestBody TrainingCourse course) {
-        service.addTrainingCourse(course);
-        return "Course added";
-    }
+	@PostMapping("/add")
+	public ResponseEntity<String> addCourse(@RequestBody TrainingCourse course) {
+		service.addTrainingCourse(course);
+		return new ResponseEntity<String>("Course added",HttpStatus.OK);
+	}
 }
