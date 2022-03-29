@@ -31,15 +31,15 @@ public class FeedBack {
 	
 	//@ManyToOne
 	//@JoinColumn(name="loginId")
-	private User user;
+	//private User user;
 	
 	//@ManyToOne
 	//@JoinColumn(name="trainingCourseId")
-	private TrainingCourse training;
+	//private TrainingCourse training;
 	
 	//@ManyToOne
 	//@JoinColumn(name="schemeId")
-	private Scheme scheme;
+	//private Scheme scheme;
 
 	public int getFeedBackId() {
 		return feedBackId;
@@ -89,7 +89,7 @@ public class FeedBack {
 		this.feedbackdate = feedbackdate;
 	}
 
-	public User getUser() {
+	/*public User getUser() {
 		return user;
 	}
 
@@ -111,7 +111,7 @@ public class FeedBack {
 
 	public void setScheme(Scheme scheme) {
 		this.scheme = scheme;
-	}
+	}*/
 	
 	
 }
