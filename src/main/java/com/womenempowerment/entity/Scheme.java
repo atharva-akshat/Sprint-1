@@ -21,8 +21,7 @@ public class Scheme {
 	@Column(name="objective")
 	private String schemeObjective;
 
-	@OneToMany
-	@JoinColumn(name="trainingCourseId")
+	@OneToMany(mappedBy = "scheme")
 	private List<TrainingCourse> training;
 
 	public Integer getSchemeId() {

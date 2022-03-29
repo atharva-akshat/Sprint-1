@@ -1,10 +1,7 @@
 package com.womenempowerment.entity;
 
 import java.time.LocalDate;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="trainingcourse")
@@ -22,6 +19,9 @@ public class TrainingCourse {
 	private LocalDate	endingDate;
 	@Column(length = 10)
 	private String	courseCompletionStatus;
+
+	@ManyToOne
+	private Scheme scheme;
 	
 	//Getters and setters
 	public Integer getTrainingCourseId() {
@@ -58,7 +58,8 @@ public class TrainingCourse {
 		return courseCompletionStatus;
 	}
 	public void setCourseCompletionStatus(String courseCompletionStatus) {
-		this.courseCompletionStatus = courseCompletionStatus;
-	}
+		this.courseCompletionStatus = courseCompletionStatus;	}
+	public Scheme getScheme() {		return scheme;	}
+	public void setScheme(Scheme scheme) {		this.scheme = scheme;	}
 }
 
