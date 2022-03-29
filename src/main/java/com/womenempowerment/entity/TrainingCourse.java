@@ -1,6 +1,7 @@
 package com.womenempowerment.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -22,6 +23,8 @@ public class TrainingCourse {
 
 	@ManyToOne
 	private Scheme scheme;
+	@ManyToMany
+	private List<Trainee> trainee;
 	
 	//Getters and setters
 	public Integer getTrainingCourseId() {
@@ -61,5 +64,13 @@ public class TrainingCourse {
 		this.courseCompletionStatus = courseCompletionStatus;	}
 	public Scheme getScheme() {		return scheme;	}
 	public void setScheme(Scheme scheme) {		this.scheme = scheme;	}
+
+	public List<Trainee> getTrainee() {
+		return trainee;
+	}
+
+	public void setTrainee(List<Trainee> trainee) {
+		this.trainee = trainee;
+	}
 }
 

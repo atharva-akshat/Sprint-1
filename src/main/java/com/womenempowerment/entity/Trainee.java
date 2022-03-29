@@ -1,5 +1,7 @@
 package com.womenempowerment.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -29,7 +31,7 @@ public class Trainee {
 	@Column
 	private LocalDate dob;
 
-	@ManyToMany
+	@ManyToMany(mappedBy="trainee")
 	private List<TrainingCourse> trainingCourse;
 
 	@OneToMany(mappedBy = "trainee")
