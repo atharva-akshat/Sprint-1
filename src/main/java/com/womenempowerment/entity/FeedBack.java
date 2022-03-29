@@ -31,7 +31,7 @@ public class FeedBack {
 	
 	//@ManyToOne
 	//@JoinColumn(name="loginId")
-	//private User user;
+	private User user;
 	
 	//@ManyToOne
 	//@JoinColumn(name="trainingCourseId")
