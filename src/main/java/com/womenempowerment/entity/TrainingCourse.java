@@ -29,7 +29,7 @@ public class TrainingCourse {
 	
 	
 	@OneToMany(mappedBy="trainingcourse",cascade=CascadeType.ALL)
-	List<FeedBack> feedBacks;
+	private List<FeedBack> feedBacks;
 	
 	//Getters and setters
 	public Integer getTrainingCourseId() {
