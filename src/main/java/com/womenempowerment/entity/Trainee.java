@@ -28,12 +28,13 @@ public class Trainee {
 	private long aadharNo;
 	@Column
 	private LocalDate dob;
-	@OneToMany
-	@JoinColumn(name="trainingCourseId")
+
+	@ManyToMany
 	private List<TrainingCourse> trainingCourse;
-	/*@OneToMany
-	@JoinColumn(name="feedBackId")
-	private List<FeedBack> feedBack;*/
+
+	@OneToMany(mappedBy = "trainee")
+	private List<FeedBack> feedBack;
+
 
 	public Integer getTraineeId() {
 		return traineeId;
@@ -123,11 +124,11 @@ public class Trainee {
 		this.trainingCourse = trainingCourse;
 	}
 
-	/*public List<FeedBack> getFeedBack() {
+	public List<FeedBack> getFeedBack() {
 		return feedBack;
 	}
 
 	public void setFeedBack(List<FeedBack> feedBack) {
 		this.feedBack = feedBack;
-	}*/
+	}
 }
