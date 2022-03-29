@@ -22,7 +22,7 @@ public class User {
 	private String userPassword;
 	
 	@OneToMany(mappedBy="users",cascade=CascadeType.ALL)
-	List<FeedBack> feedBacks;
+	private List<FeedBack> feedBacks;
 	
 	
 	
