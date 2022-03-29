@@ -90,9 +90,6 @@
 .idea/uiDesigner.xml
 .idea/vcs.xml
 Sprint1.iml
-src/main/java/com/womenempowerment/controller/Application.java
-src/main/java/com/womenempowerment/controller/TraineeController.java
-src/main/java/com/womenempowerment/service/ITraineeServiceImpl.java
 target/classes/application.properties
 target/classes/com/womenempowerment/controller/Application.class
 target/classes/com/womenempowerment/controller/TraineeController.class
