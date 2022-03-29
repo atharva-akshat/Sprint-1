@@ -13,11 +13,11 @@ import com.womenempowerment.service.IUserService;
 public class UserController {
     @Autowired
     IUserService service;
-
-    @PostMapping("/add")
-    public String addUser(@RequestBody User user) {
-        service.registerUser(user);
-        return "User added";
-    }
+    
+	@PostMapping("/add")
+	public ResponseEntity<String> addUser(@RequestBody User user) {
+		service.registerUser(user);
+		return new ResponseEntity<String>("User added",HttpStatus.OK);
+	}
 
 }
