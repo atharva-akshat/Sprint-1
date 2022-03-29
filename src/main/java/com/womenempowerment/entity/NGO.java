@@ -13,97 +13,93 @@ import javax.persistence.*;
 public class NGO {
 
 	@Id
-	@GeneratedValue
-	private int id;
-	private int size;
-	@Column(length=35)
-	private String name;
-
+	private Integer ngoId;
 	@Column(length=25)
-	private String location;
+	private String ngoName;
 	@Column(length=25)
-	private String organizationType;
+	private String ngoLocation;
 	@Column(length=25)
-	private Double donation;
-	@Column(length=25)
-	private String activities;
-	@Column(length=25)
-	private String motive;
+	private String ngoType;
+	@Column(length=100)
+	private String ngoMotive;
+	private double donation;
+	private int ngoSize;
+	@Column(length=100)
+	private String ngoActivities;
 
-	public int getId() {
-		return id;
+	@ManyToOne
+	@JoinColumn(name="trainingCourseId")
+	private TrainingCourse trainingCourse;
+
+	public Integer getNgoId() {
+		return ngoId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setNgoId(Integer ngoId) {
+		this.ngoId = ngoId;
 	}
 
-
-	public int getSize() {
-		return size;
+	public String getNgoName() {
+		return ngoName;
 	}
 
-	public void setSize(int size) {
-		this.size = size;
+	public void setNgoName(String ngoName) {
+		this.ngoName = ngoName;
 	}
 
-
-	public NGO() {
+	public String getNgoLocation() {
+		return ngoLocation;
 	}
 
-	public String getName() {
-		return name;
+	public void setNgoLocation(String ngoLocation) {
+		this.ngoLocation = ngoLocation;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public String getNgoType() {
+		return ngoType;
 	}
 
-	public String getLocation() {
-		return location;
+	public void setNgoType(String ngoType) {
+		this.ngoType = ngoType;
 	}
 
-	public void setLoaction(String location) {
-		this.location = location;
+	public String getNgoMotive() {
+		return ngoMotive;
 	}
 
-	public String getOrganizationType() {
-		return organizationType;
+	public void setNgoMotive(String ngoMotive) {
+		this.ngoMotive = ngoMotive;
 	}
 
-	public void setOrganizationType(String organizationType) {
-		this.organizationType = organizationType;
-	}
-
-	public Double getDonation() {
+	public double getDonation() {
 		return donation;
 	}
 
-	public void setContactNo(Double donation) {
+	public void setDonation(double donation) {
 		this.donation = donation;
 	}
 
-	public String getMotive() {
-		return motive;
+	public int getNgoSize() {
+		return ngoSize;
 	}
 
-	public void setMotive(String motive) {
-		this.motive = motive;
+	public void setNgoSize(int ngoSize) {
+		this.ngoSize = ngoSize;
 	}
 
-	public String getActivities() {
-		return activities;
+	public String getNgoActivities() {
+		return ngoActivities;
 	}
 
-	public void activities(String activities) {
-		this.activities = activities;
+	public void setNgoActivities(String ngoActivities) {
+		this.ngoActivities = ngoActivities;
 	}
 
-	/*public TrainingCourse getTraining() {
+	public TrainingCourse getTrainingCourse() {
 		return trainingCourse;
 	}
-	public void setTraining(TrainingCourse trainingCourse) {
-		this.trainingCourse = trainingCourse;
-	}*/
 
+	public void setTrainingCourse(TrainingCourse trainingCourse) {
+		this.trainingCourse = trainingCourse;
+	}
 }
