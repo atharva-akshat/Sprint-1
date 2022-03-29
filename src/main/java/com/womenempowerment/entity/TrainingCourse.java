@@ -1,9 +1,13 @@
 package com.womenempowerment.entity;
 
 import java.time.LocalDate;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +26,10 @@ public class TrainingCourse {
 	private LocalDate	endingDate;
 	@Column(length = 10)
 	private String	courseCompletionStatus;
+	
+	
+	@OneToMany(mappedBy="trainingcourse",cascade=CascadeType.ALL)
+	List<FeedBack> feedBacks;
 	
 	//Getters and setters
 	public Integer getTrainingCourseId() {
@@ -59,6 +67,12 @@ public class TrainingCourse {
 	}
 	public void setCourseCompletionStatus(String courseCompletionStatus) {
 		this.courseCompletionStatus = courseCompletionStatus;
+	}
+	public List<FeedBack> getFeedBacks() {
+		return feedBacks;
+	}
+	public void setFeedBacks(List<FeedBack> feedBacks) {
+		this.feedBacks = feedBacks;
 	}
 }
 

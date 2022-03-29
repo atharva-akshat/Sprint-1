@@ -1,8 +1,13 @@
 package com.womenempowerment.entity;
 
+import java.util.List;
+
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +20,11 @@ public class User {
 	private String userName;
 	@Column(length = 10)
 	private String userPassword;
+	
+	@OneToMany(mappedBy="users",cascade=CascadeType.ALL)
+	List<FeedBack> feedBacks;
+	
+	
 	
 	//Getters and setters
 	public int getLoginId() {
@@ -34,6 +44,12 @@ public class User {
 	}
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
+	}
+	public List<FeedBack> getFeedBacks() {
+		return feedBacks;
+	}
+	public void setFeedBacks(List<FeedBack> feedBacks) {
+		this.feedBacks = feedBacks;
 	}
 }
 

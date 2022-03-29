@@ -21,12 +21,24 @@ public class Scheme {
 	@Column(name="objective")
 	private String schemeObjective;
 
-	@OneToMany
-	@JoinColumn(name="trainingCourseId")
-	private List<TrainingCourse> training;
+	@OneToMany(mappedBy="scheme",cascade=CascadeType.ALL)
+	private List<FeedBack> feedBacks;
+	
+	
+	 @OneToMany(mappedBy="scheme",cascade=CascadeType.ALL)
+	 private List<TrainingCourse> training;
+	 
 
 	public Integer getSchemeId() {
 		return schemeId;
+	}
+
+	public List<FeedBack> getFeedBacks() {
+		return feedBacks;
+	}
+
+	public void setFeedBacks(List<FeedBack> feedBacks) {
+		this.feedBacks = feedBacks;
 	}
 
 	public void setSchemeId(Integer schemeId) {
