@@ -1,6 +1,7 @@
 package com.womenempowerment.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -20,9 +21,9 @@ public class Scheme {
 	@Column(name="objective")
 	private String schemeObjective;
 
-	@ManyToOne
+	@OneToMany
 	@JoinColumn(name="trainingCourseId")
-	private TrainingCourse training;
+	private List<TrainingCourse> training;
 
 	public Integer getSchemeId() {
 		return schemeId;
@@ -72,11 +73,11 @@ public class Scheme {
 		this.schemeObjective = schemeObjective;
 	}
 
-	public TrainingCourse getTraining() {
+	public List<TrainingCourse> getTraining() {
 		return training;
 	}
 
-	public void setTraining(TrainingCourse training) {
+	public void setTraining(List<TrainingCourse> training) {
 		this.training = training;
 	}
 }

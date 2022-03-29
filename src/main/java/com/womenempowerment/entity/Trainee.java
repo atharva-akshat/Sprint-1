@@ -2,8 +2,10 @@ package com.womenempowerment.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
+@Table(name = "trainee")
 public class Trainee {
 
 	@Id
@@ -26,14 +28,12 @@ public class Trainee {
 	private long aadharNo;
 	@Column
 	private LocalDate dob;
-
-	@ManyToOne
+	@OneToMany
 	@JoinColumn(name="trainingCourseId")
-	private TrainingCourse trainingCourse;
-
-	@ManyToOne
+	private List<TrainingCourse> trainingCourse;
+	/*@OneToMany
 	@JoinColumn(name="feedBackId")
-	private FeedBack feedBack;
+	private List<FeedBack> feedBack;*/
 
 	public Integer getTraineeId() {
 		return traineeId;
@@ -115,11 +115,19 @@ public class Trainee {
 		this.dob = dob;
 	}
 
-	public TrainingCourse getTrainingCourse() {
+	public List<TrainingCourse> getTrainingCourse() {
 		return trainingCourse;
 	}
 
-	public void setTrainingCourse(TrainingCourse trainingCourse) {
+	public void setTrainingCourse(List<TrainingCourse> trainingCourse) {
 		this.trainingCourse = trainingCourse;
 	}
+
+	/*public List<FeedBack> getFeedBack() {
+		return feedBack;
+	}
+
+	public void setFeedBack(List<FeedBack> feedBack) {
+		this.feedBack = feedBack;
+	}*/
 }
