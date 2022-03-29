@@ -2,6 +2,7 @@ package com.womenempowerment.entity;
 
 import java.time.LocalDate;
 import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -25,6 +26,10 @@ public class TrainingCourse {
 	private Scheme scheme;
 	@ManyToMany
 	private List<Trainee> trainee;
+	
+	
+	@OneToMany(mappedBy="trainingcourse",cascade=CascadeType.ALL)
+	private List<FeedBack> feedBacks;
 	
 	//Getters and setters
 	public Integer getTrainingCourseId() {
@@ -71,6 +76,12 @@ public class TrainingCourse {
 
 	public void setTrainee(List<Trainee> trainee) {
 		this.trainee = trainee;
+	}
+	public List<FeedBack> getFeedBacks() {
+		return feedBacks;
+	}
+	public void setFeedBacks(List<FeedBack> feedBacks) {
+		this.feedBacks = feedBacks;
 	}
 }
 

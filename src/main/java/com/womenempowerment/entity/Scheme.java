@@ -24,8 +24,24 @@ public class Scheme {
 	@OneToMany(mappedBy = "scheme")
 	private List<TrainingCourse> training;
 
+	@OneToMany(mappedBy="scheme",cascade=CascadeType.ALL)
+	private List<FeedBack> feedBacks;
+	
+	
+	 @OneToMany(mappedBy="scheme",cascade=CascadeType.ALL)
+	 private List<TrainingCourse> trainingCourse;
+
+
 	public Integer getSchemeId() {
 		return schemeId;
+	}
+
+	public List<FeedBack> getFeedBacks() {
+		return feedBacks;
+	}
+
+	public void setFeedBacks(List<FeedBack> feedBacks) {
+		this.feedBacks = feedBacks;
 	}
 
 	public void setSchemeId(Integer schemeId) {
