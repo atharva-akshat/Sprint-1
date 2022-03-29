@@ -36,7 +36,7 @@ public class FeedBack {
 	
 	@ManyToOne
 	@JoinColumn(name="trainingCourseId")
-	private TrainingCourse training;
+	private TrainingCourse trainingCourse;
 	
 	@ManyToOne
 	@JoinColumn(name="schemeId")
@@ -100,11 +100,11 @@ public class FeedBack {
 	}
 
 	public TrainingCourse getTraining() {
-		return training;
+		return trainingCourse;
 	}
 
 	public void setTraining(TrainingCourse training) {
-		this.training = training;
+		this.trainingCourse = training;
 	}
 
 	public Scheme getScheme() {

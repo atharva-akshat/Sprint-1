@@ -28,7 +28,7 @@ public class TrainingCourse {
 	private List<Trainee> trainee;
 	
 	
-	@OneToMany(mappedBy="trainingcourse",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="trainingCourse",cascade=CascadeType.ALL)
 	private List<FeedBack> feedBacks;
 	
 	//Getters and setters
