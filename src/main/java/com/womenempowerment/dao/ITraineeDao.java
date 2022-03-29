@@ -1,8 +1,10 @@
 package com.womenempowerment.dao;
 
-import org.springframework.stereotype.Repository;
+import com.womenempowerment.entity.Trainee;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public interface ITraineeDao {
+
+
+public interface ITraineeDao extends JpaRepository<Trainee, Integer> {
 
 }
