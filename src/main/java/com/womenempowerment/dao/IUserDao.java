@@ -1,12 +1,10 @@
 package com.womenempowerment.dao;
 
 import com.womenempowerment.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface IUserDao {
-	User registerUser(User user);
-
-	User login(String username, String password);
-
-	User forgotPassword(User user);
+@Repository
+public interface IUserDao extends JpaRepository<User, Integer> {
 
 }

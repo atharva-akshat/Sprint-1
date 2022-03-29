@@ -1,22 +1,10 @@
 package com.womenempowerment.dao;
 
-import java.time.LocalDate;
-import java.util.List;
-
 import com.womenempowerment.entity.Scheme;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface ISchemeDao {
-	Scheme addScheme(Scheme scheme);
 
-	Scheme updateScheme(Scheme scheme);
+public interface ISchemeDao  {
 
-	Scheme viewScheme(int schemeId);
-
-	List<Scheme> viewAllScheme();
-
-	void deleteScheme(int schemeId);
-
-	List<Scheme> viewSchemesByType(String schemeType);
-
-	List<Scheme> viewSchemeByLaunchDate(LocalDate date);
 }
