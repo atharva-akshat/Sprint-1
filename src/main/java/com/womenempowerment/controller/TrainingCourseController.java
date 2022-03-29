@@ -2,6 +2,8 @@ package com.womenempowerment.controller;
 
 import com.womenempowerment.entity.TrainingCourse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +19,6 @@ public class TrainingCourseController {
 	@PostMapping("/add")
 	public ResponseEntity<String> addCourse(@RequestBody TrainingCourse course) {
 		service.addTrainingCourse(course);
-		return new ResponseEntity<String>("Course added",HttpStatus.OK);
+		return new ResponseEntity<String>("Course added", HttpStatus.OK);
 	}
 }
