@@ -1,4 +1,4 @@
-package com.womenempowerment.model;
+package com.womenempowerment.entity;
 
 import java.time.LocalDate;
 import javax.persistence.Column;
