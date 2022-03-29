@@ -23,4 +23,3 @@ public class TraineeController {
         return new ResponseEntity<String>("Trainee Added!", HttpStatus.OK);
     }
 }
-
