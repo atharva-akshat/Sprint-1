@@ -48,16 +48,19 @@ public class ITrainingCourseServiceImpl implements ITrainingCourseService{
 
     @Override
     public List<TrainingCourse> viewAllTrainingCourse() {
-        return null;
+        return courseDao.findAll();
     }
 
     @Override
     public void deleteTrainingCourse(int courseId) {
-
+    	if(courseDao.existsById(courseId)) {
+    		courseDao.deleteById(courseId);
+    	}
     }
 
     @Override
-    public void viewByTrainingCourseName(String courseName) {
-
+    public TrainingCourse viewByTrainingCourseName(String courseName) {
+    	System.out.println("Got "+courseName);
+    	return courseDao.viewbyCourseName(courseName);
     }
 }
