@@ -6,14 +6,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user")
+@Table(name="users")
 public class User {
 	@Id
-	@Column(name="loginId", length = 4)
 	private int loginId;
-	@Column(name="userName",length = 10)
+	@Column(length = 15)
 	private String userName;
-	@Column(name="userPassword",length = 10)
+	@Column(length = 15)
 	private String userPassword;
 	
 	
