@@ -20,7 +20,7 @@ public class FeedBackController {
 	@PostMapping("/add")
 	public ResponseEntity<String> addFeedBack(@RequestBody IFeedBackDto feedBack){
 		feedBackService.addFeedBack(feedBack);
-		return new ResponseEntity<String>("Feedback Added..",HttpStatus.OK);
+		return new ResponseEntity<>("Feedback Added..", HttpStatus.OK);
 	}
 
 	@GetMapping("/view")
