@@ -2,9 +2,14 @@ package com.womenempowerment.service;
 
 import java.util.List;
 
+//import com.womenempowerment.dto.INgoDto;
+
 import com.womenempowerment.entity.NGO;
 
 public interface INGOService  {
+	
+	
+	//NGO addNGO(INgoDto ngo);
 	NGO addNGO(NGO ngo);
 
 	NGO updateNGO(NGO ngo);
