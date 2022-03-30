@@ -103,5 +103,18 @@ public class NGO {
 		this.trainingCourse = trainingCourse;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "NGO{" +
+				"ngoId=" + ngoId +
+				", ngoName='" + ngoName + '\'' +
+				", ngoLocation='" + ngoLocation + '\'' +
+				", ngoType='" + ngoType + '\'' +
+				", ngoMotive='" + ngoMotive + '\'' +
+				", donation=" + donation +
+				", ngoSize=" + ngoSize +
+				", ngoActivities='" + ngoActivities + '\'' +
+				", trainingCourse=" + trainingCourse +
+				'}';
+	}
 }

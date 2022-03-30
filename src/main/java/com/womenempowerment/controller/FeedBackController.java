@@ -1,7 +1,6 @@
 package com.womenempowerment.controller;
 
 import com.womenempowerment.dto.IFeedBackDto;
-import com.womenempowerment.entity.FeedBack;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,14 +21,23 @@ public class FeedBackController {
 		return new ResponseEntity<String>("Feedback Added..",HttpStatus.OK);
 	}
 
-	@GetMapping()
-	public ResponseEntity<List<FeedBack>> viewAllFeedBack(){
-		return new ResponseEntity<>(feedBackService.viewAllFeedBack(),HttpStatus.OK);
+	@GetMapping("/view")
+	public ResponseEntity<String> viewAllFeedBack(){
+		return new ResponseEntity<>(feedBackService.viewAllFeedBack().toString(),HttpStatus.OK);
 	}
 
-	@GetMapping("/{id}")
-	public ResponseEntity<FeedBack> viewFeedBack(@PathVariable int id){
-		return new ResponseEntity<>(feedBackService.viewFeedBack(id),HttpStatus.OK);
+	@GetMapping("/id-{id}")
+	public ResponseEntity<String> viewFeedBack(@PathVariable int id){
+		return new ResponseEntity<>(feedBackService.viewFeedBack(id).toString(),HttpStatus.OK);
+	}
+
+	@GetMapping("/sc-{scheme}")
+	public ResponseEntity<String> viewFeedBackBySchemeName(@PathVariable String scheme){
+		return new ResponseEntity<>(feedBackService.viewFeedBackBySchemeName(scheme).toString(),HttpStatus.OK);
+	}
+	@GetMapping("/cs-{course}")
+	public ResponseEntity<String> viewFeedBackByTrainingCourseName(@PathVariable String course){
+		return new ResponseEntity<>(feedBackService.viewFeedBackByTrainingCourseName(course).toString(),HttpStatus.OK);
 	}
 	
 	@GetMapping("/{schemeName}")

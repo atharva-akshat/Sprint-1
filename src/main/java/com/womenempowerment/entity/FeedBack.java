@@ -90,8 +90,6 @@ public class FeedBack {
 		this.feedbackdate = feedbackdate;
 	}
 
-	
-
 	public Trainee getTrainee() {
 		return trainee;
 	}
@@ -122,5 +120,20 @@ public class FeedBack {
 
 	public void setScheme(Scheme scheme) {
 		this.scheme = scheme;
+	}
+
+	@Override
+	public String toString() {
+		return "FeedBack{" +
+				"feedBackId=" + feedBackId +
+				", schemeRating=" + schemeRating +
+				", schemeTrainingRating=" + schemeTrainingRating +
+				", overallRating=" + overallRating +
+				", comments='" + comments + '\'' +
+				", feedbackdate=" + feedbackdate +
+				", trainee=" + trainee +
+				", trainingCourse=" + trainingCourse +
+				", scheme=" + scheme +
+				'}';
 	}
 }
