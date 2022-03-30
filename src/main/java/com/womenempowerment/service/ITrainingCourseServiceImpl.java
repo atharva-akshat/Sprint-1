@@ -20,9 +20,11 @@ public class ITrainingCourseServiceImpl implements ITrainingCourseService{
     @Autowired
     ISchemeDao schemeDao;
 
+    //adding courses
     @Override
     public TrainingCourse addTrainingCourse(ITrainingCourseDto dto) {
     	Scheme scheme= schemeDao.findById(dto.getSchemeId()).orElse(null);
+    	System.out.println(scheme.getSchemeId()+" "+ scheme.getSchemeName());
     	TrainingCourse course= new TrainingCourse();
     	course.setTrainingCourseId(dto.getTrainingCourseId());
     	course.setCourseName(dto.getCourseName());
@@ -41,7 +43,7 @@ public class ITrainingCourseServiceImpl implements ITrainingCourseService{
 
     @Override
     public TrainingCourse viewTrainingCourse(int courseId) {
-        return null;
+        return courseDao.findById(courseId).orElse(null);
     }
 
     @Override
