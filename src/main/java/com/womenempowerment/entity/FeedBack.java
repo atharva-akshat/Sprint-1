@@ -40,7 +40,6 @@ public class FeedBack {
 	
 	@ManyToOne
 	@JoinColumn(name="schemeId")
-
 	private Scheme scheme;
 
 	public int getFeedBackId() {
