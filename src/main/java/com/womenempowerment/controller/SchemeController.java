@@ -18,7 +18,7 @@ public class SchemeController {
 	ISchemeServiceImpl service;
 	
 	@PostMapping("/add")
-	public ResponseEntity<String> addTrainee(@RequestBody Scheme scheme){
+	public ResponseEntity<String> addScheme(@RequestBody Scheme scheme){
 		service.addScheme(scheme);
 		return new ResponseEntity<String>("Scheme Added!", HttpStatus.OK);
 	}
