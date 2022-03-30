@@ -43,25 +43,21 @@ public class IFeedBackServiceImpl implements IFeedBackService{
 
 	@Override
 	public FeedBack updateFeedBack(FeedBack feedback) {
-		// TODO Auto-generated method stub
-		return null;
+		return feedbackDao.save(feedback);
 	}
 
 	@Override
 	public FeedBack viewFeedBack(int feedbackId) {
-		// TODO Auto-generated method stub
-		return null;
+		return feedbackDao.findById(feedbackId).orElse(null);
 	}
 
 	@Override
 	public List<FeedBack> viewAllFeedBack() {
-		// TODO Auto-generated method stub
-		return null;
+		return feedbackDao.findAll();
 	}
 
 	@Override
-	public List<FeedBack> viewFeedBackBySchemeName() {
-		// TODO Auto-generated method stub
+	public List<FeedBack> viewFeedBackBySchemeName(String schemeName) {
 		return null;
 	}
 
