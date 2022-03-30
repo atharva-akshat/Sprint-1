@@ -2,6 +2,9 @@ package com.womenempowerment.controller;
 
 import com.womenempowerment.dto.ITrainingCourseDto;
 import com.womenempowerment.entity.TrainingCourse;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,9 +28,27 @@ public class TrainingCourseController {
 		return new ResponseEntity<String>("Course added", HttpStatus.OK);
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/view/{id}")
 	public String getCourseById(@PathVariable int id) {
 		TrainingCourse course = service.viewTrainingCourse(id);
 		return course.toString();
+	}
+	
+	@GetMapping
+	public String getAllCourses() {
+		List<TrainingCourse> courses= service.viewAllTrainingCourse();
+		return courses.toString();
+	}
+	
+	@PostMapping("/delete/{id}")
+	public ResponseEntity<String> deleteCourse(@PathVariable int id){
+		service.deleteTrainingCourse(id);
+		return new ResponseEntity<String>("Course deleted", HttpStatus.OK);
+	}
+	
+	@GetMapping("/{name}")
+	public ResponseEntity<String> courseByName(@PathVariable String name){
+		TrainingCourse course= service.viewByTrainingCourseName(name);
+		return new ResponseEntity<String>(course.toString(), HttpStatus.OK);
 	}
 }
