@@ -23,7 +23,7 @@ public class FeedBackController {
 		return new ResponseEntity<>("Feedback Added..", HttpStatus.OK);
 	}
 
-	@GetMapping("/view")
+	@GetMapping
 	public ResponseEntity<String> viewAllFeedBack(){
 		return new ResponseEntity<>(feedBackService.viewAllFeedBack().toString(),HttpStatus.OK);
 	}
