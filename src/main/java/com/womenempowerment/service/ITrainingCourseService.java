@@ -16,6 +16,6 @@ public interface ITrainingCourseService  {
 
 	void deleteTrainingCourse(int courseId);
 
-	void viewByTrainingCourseName(String courseName);
+	TrainingCourse viewByTrainingCourseName(String courseName);
 
 }
