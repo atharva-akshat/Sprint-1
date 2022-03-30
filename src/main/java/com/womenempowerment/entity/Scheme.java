@@ -26,10 +26,6 @@ public class Scheme {
 
 	@OneToMany(mappedBy="scheme",cascade=CascadeType.ALL)
 	private List<FeedBack> feedBacks;
-	
-	
-	 @OneToMany(mappedBy="scheme",cascade=CascadeType.ALL)
-	 private List<TrainingCourse> trainingCourse;
 
 
 	public Integer getSchemeId() {

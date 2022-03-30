@@ -1,7 +1,5 @@
 package com.womenempowerment.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -11,22 +9,23 @@ import java.util.List;
 public class Trainee {
 
 	@Id
+	@Column(name="traineeId", length = 25)
 	private Integer traineeId;
-	@Column(length = 25)
+	@Column(name="userName",length = 25)
 	private String userName;
-	@Column(length = 20)
+	@Column(name="password",length = 20)
 	private String password;
-	@Column(length = 50)
+	@Column(name="firstName",length = 50)
 	private String firstName;
-	@Column(length = 50)
+	@Column(name="lastName",length = 50)
 	private String lastName;
 	@Column
 	private long contact;
 	@Column(length = 50)
 	private String email;
-	@Column(length = 100)
+	@Column(name="familyInfo", length = 100)
 	private String familyInfo;
-	@Column(length = 12)
+	@Column(name="aadharNo",length = 12)
 	private long aadharNo;
 	@Column
 	private LocalDate dob;

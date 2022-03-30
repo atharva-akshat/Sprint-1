@@ -1,9 +1,8 @@
 package com.womenempowerment.entity;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,23 +10,26 @@ import javax.persistence.*;
 public class NGO {
 
 	@Id
+	@Column(name="ngoId", length=4)
 	private Integer ngoId;
-	@Column(length=25)
+	@Column(name="ngoName",length=25)
 	private String ngoName;
-	@Column(length=25)
+	@Column(name="ngoLocation",length=25)
 	private String ngoLocation;
-	@Column(length=25)
+	@Column(name="ngoType",length=25)
 	private String ngoType;
-	@Column(length=100)
+	@Column(name="ngoMotive",length=100)
 	private String ngoMotive;
 	private double donation;
+	@Column(name="ngoSize",length=3)
 	private int ngoSize;
-	@Column(length=100)
+	@Column(name="ngoActivities", length=100)
 	private String ngoActivities;
 
-	@ManyToOne
-	@JoinColumn(name="trainingCourseId")
-	private TrainingCourse trainingCourse;
+	@ManyToMany
+	@JoinTable(name= "ngo_training", joinColumns = @JoinColumn(name ="ngoId"),
+	inverseJoinColumns = @JoinColumn(name ="Id"))
+	private List<TrainingCourse> trainingCourse;
 
 	public Integer getNgoId() {
 		return ngoId;
@@ -93,11 +95,13 @@ public class NGO {
 		this.ngoActivities = ngoActivities;
 	}
 
-	public TrainingCourse getTrainingCourse() {
+	public List<TrainingCourse> getTrainingCourse() {
 		return trainingCourse;
 	}
 
-	public void setTrainingCourse(TrainingCourse trainingCourse) {
+	public void setTrainingCourse(List<TrainingCourse> trainingCourse) {
 		this.trainingCourse = trainingCourse;
 	}
+
+	
 }

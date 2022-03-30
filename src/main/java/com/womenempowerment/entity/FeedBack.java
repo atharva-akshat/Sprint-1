@@ -31,8 +31,8 @@ public class FeedBack {
 	
 
 	@ManyToOne
-	@JoinColumn(name="loginId")
-	private User user;
+	@JoinColumn(name="traineeId")
+	private Trainee trainee;
 	
 	@ManyToOne
 	@JoinColumn(name="trainingCourseId")
@@ -91,12 +91,22 @@ public class FeedBack {
 		this.feedbackdate = feedbackdate;
 	}
 
-	public User getUser() {
-		return user;
+	
+
+	public Trainee getTrainee() {
+		return trainee;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setTrainee(Trainee trainee) {
+		this.trainee = trainee;
+	}
+
+	public TrainingCourse getTrainingCourse() {
+		return trainingCourse;
+	}
+
+	public void setTrainingCourse(TrainingCourse trainingCourse) {
+		this.trainingCourse = trainingCourse;
 	}
 
 	public TrainingCourse getTraining() {

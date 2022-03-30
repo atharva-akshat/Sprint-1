@@ -9,23 +9,30 @@ import javax.persistence.*;
 @Table(name="trainingcourse")
 public class TrainingCourse {
 	@Id
-	@Column(length = 4)
+	@Column(name="trainingCourseId", length = 4)
 	private Integer trainingCourseId;
-	@Column(length = 20)
+	@Column(name="courseName",length = 20)
 	private String	courseName;
-	@Column(length = 10)
+	@Column(name="courseDuration",length = 10)
 	private String courseDuration;
-	@Column
+	@Column(name="startingDate")
 	private LocalDate	startingDate;
-	@Column
+	@Column(name="endingDate")
 	private LocalDate	endingDate;
-	@Column(length = 10)
+	@Column(name="courseCompletionStatus",length = 10)
 	private String	courseCompletionStatus;
 
 	@ManyToOne
+	@JoinColumn(name = "schemeId")
 	private Scheme scheme;
+	
 	@ManyToMany
+	@JoinTable(name= "trainee_training", joinColumns = @JoinColumn(name="id"),
+	inverseJoinColumns = @JoinColumn(name="traineeId"))
 	private List<Trainee> trainee;
+	
+	@ManyToMany(mappedBy = "trainingCourse")
+	private List<NGO> ngo;
 	
 	
 	@OneToMany(mappedBy="trainingCourse",cascade=CascadeType.ALL)
@@ -83,5 +90,12 @@ public class TrainingCourse {
 	public void setFeedBacks(List<FeedBack> feedBacks) {
 		this.feedBacks = feedBacks;
 	}
+	public List<NGO> getNgo() {
+		return ngo;
+	}
+	public void setNgo(List<NGO> ngo) {
+		this.ngo = ngo;
+	}
+	
 }
 

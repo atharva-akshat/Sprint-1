@@ -4,18 +4,34 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.womenempowerment.dao.ISchemeDao;
 import com.womenempowerment.dao.ITrainingCourseDao;
+import com.womenempowerment.dto.ITrainingCourseDto;
+import com.womenempowerment.entity.Scheme;
 import com.womenempowerment.entity.TrainingCourse;
 
 @Service
 public class ITrainingCourseServiceImpl implements ITrainingCourseService{
 
     @Autowired
-    ITrainingCourseDao dao;
+    ITrainingCourseDao courseDao;
+    
+    @Autowired
+    ISchemeDao schemeDao;
 
     @Override
-    public TrainingCourse addTrainingCourse(TrainingCourse course) {
-        return dao.save(course);
+    public TrainingCourse addTrainingCourse(ITrainingCourseDto dto) {
+    	Scheme scheme= schemeDao.findById(dto.getSchemeId()).orElse(null);
+    	TrainingCourse course= new TrainingCourse();
+    	course.setTrainingCourseId(dto.getTrainingCourseId());
+    	course.setCourseName(dto.getCourseName());
+    	course.setCourseDuration(dto.getCourseDuration());
+    	course.setStartingDate(dto.getStartingDate());
+    	course.setEndingDate(dto.getEndingDate());
+    	course.setCourseCompletionStatus(dto.getCourseCompletionStatus());
+    	course.setScheme(scheme);
+        return courseDao.save(course);
     }
 
     @Override
