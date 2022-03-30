@@ -43,7 +43,7 @@ public class IFeedBackServiceImpl implements IFeedBackService{
 
 	@Override
 	public FeedBack updateFeedBack(FeedBack feedback) {
-		return feedbackDao.save(feedback);
+		return null;
 	}
 
 	@Override
@@ -58,13 +58,12 @@ public class IFeedBackServiceImpl implements IFeedBackService{
 
 	@Override
 	public List<FeedBack> viewFeedBackBySchemeName(String schemeName) {
-		return null;
+		return feedbackDao.findBySchemeName(schemeName);
 	}
 
 	@Override
-	public List<FeedBack> viewFeedBackByTrainingCourseName() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<FeedBack> viewFeedBackByTrainingCourseName(String courseName) {
+		return feedbackDao.findByCourseName(courseName);
 	}
 
 }

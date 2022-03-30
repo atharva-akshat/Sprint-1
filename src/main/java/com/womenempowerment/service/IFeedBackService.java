@@ -8,7 +8,7 @@ import com.womenempowerment.entity.FeedBack;
 public interface IFeedBackService {
 	FeedBack addFeedBack(IFeedBackDto feedBackDto);
 
-	FeedBack updateFeedBack(FeedBack feedback);
+	FeedBack updateFeedBack(FeedBack feedBack);
 
 	FeedBack viewFeedBack(int feedbackId);
 
@@ -16,5 +16,5 @@ public interface IFeedBackService {
 
 	List<FeedBack> viewFeedBackBySchemeName(String schemeName);
 
-	List<FeedBack> viewFeedBackByTrainingCourseName();
+	List<FeedBack> viewFeedBackByTrainingCourseName(String courseName);
 }
