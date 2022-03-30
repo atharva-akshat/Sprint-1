@@ -3,14 +3,13 @@ package com.womenempowerment.service;
 import java.util.List;
 import com.womenempowerment.dao.*;
 import com.womenempowerment.dto.IFeedBackDto;
+import com.womenempowerment.dto.IFeedBackUpdateDto;
 import com.womenempowerment.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class IFeedBackServiceImpl implements IFeedBackService{
-
-	private static final int Iterable = 0;
 
 	@Autowired
 	IFeedBackDao feedbackDao;
@@ -23,7 +22,6 @@ public class IFeedBackServiceImpl implements IFeedBackService{
 
 	@Autowired
 	ITraineeDao traineeDao;
-
 
 	@Override
 	public FeedBack addFeedBack(IFeedBackDto dto) {
@@ -44,8 +42,22 @@ public class IFeedBackServiceImpl implements IFeedBackService{
 	}
 
 	@Override
-	public FeedBack updateFeedBack(FeedBack feedback) {
-		return null;
+	public IFeedBackUpdateDto updateFeedBack(IFeedBackUpdateDto feedback) {
+			if (feedbackDao.existsById(feedback.getFeedBackId())){
+				FeedBack existingFeedBack = feedbackDao.findById(feedback.getFeedBackId()).get();
+				existingFeedBack.setFeedBackId(feedback.getFeedBackId());
+				existingFeedBack.setSchemeRating(feedback.getSchemeRating());
+				existingFeedBack.setSchemeTrainingRating(feedback.getSchemeTrainingRating());
+				existingFeedBack.setOverallRating(feedback.getOverallRating());
+				existingFeedBack.setComments(feedback.getComments());
+				existingFeedBack.setFeedbackdate(feedback.getFeedbackdate());
+				FeedBack updatedFeedBack = feedbackDao.save(existingFeedBack);
+				return new IFeedBackUpdateDto(updatedFeedBack.getFeedBackId(),updatedFeedBack.getSchemeRating(),
+						updatedFeedBack.getSchemeTrainingRating(),updatedFeedBack.getOverallRating(),
+						updatedFeedBack.getComments(), updatedFeedBack.getFeedbackdate());
+			}
+			else
+				return null;
 	}
 
 	@Override
@@ -60,19 +72,11 @@ public class IFeedBackServiceImpl implements IFeedBackService{
 
 	@Override
 	public List<FeedBack> viewFeedBackBySchemeName(String schemeName) {
-
-		List<FeedBack> feedback=feedbackDao.viewbySchemeName(schemeName);
-		return feedback;
+		return feedbackDao.viewBySchemeName(schemeName);
 	}
 
 	@Override
 	public List<FeedBack> viewFeedBackByTrainingCourseName(String trainingCourseName) {
-		List<FeedBack> feedback=feedbackDao.viewbytrainingCourseName(trainingCourseName);
-		// TODO Auto-generated method stub
-		return feedback;
-
+		return feedbackDao.viewByTrainingCourseName(trainingCourseName);
 	}
-
-	
-
 }

@@ -1,13 +1,15 @@
 package com.womenempowerment.controller;
 
 import com.womenempowerment.dto.IFeedBackDto;
+import com.womenempowerment.dto.IFeedBackUpdateDto;
 import com.womenempowerment.entity.FeedBack;
+import com.womenempowerment.exception.FeedBackAlreadyExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.womenempowerment.service.IFeedBackService;
-
+import com.womenempowerment.exception.FeedBackNotFoundException;
 import java.util.List;
 
 
@@ -19,27 +21,50 @@ public class FeedBackController {
 	
 	@PostMapping("/add")
 	public ResponseEntity<String> addFeedBack(@RequestBody IFeedBackDto feedBack){
+		FeedBack feedback = feedBackService.viewFeedBack(feedBack.getFeedBackId());
+		if (feedback != null)
+			throw new FeedBackAlreadyExistsException();
 		feedBackService.addFeedBack(feedBack);
-		return new ResponseEntity<>("Feedback Added..", HttpStatus.OK);
+		return new ResponseEntity<>("Feedback Added!", HttpStatus.OK);
+	}
+	@PutMapping("/update")
+	public ResponseEntity<String> updateFeedBack(@RequestBody IFeedBackUpdateDto feedBack){
+		FeedBack feedback = feedBackService.viewFeedBack(feedBack.getFeedBackId());
+		if (feedback == null)
+			throw new FeedBackNotFoundException();
+		feedBackService.updateFeedBack(feedBack);
+		return new ResponseEntity<>("Feedback Updated!", HttpStatus.OK);
 	}
 
 	@GetMapping
 	public ResponseEntity<String> viewAllFeedBack(){
-		return new ResponseEntity<>(feedBackService.viewAllFeedBack().toString(),HttpStatus.OK);
+		List<FeedBack> feedback = feedBackService.viewAllFeedBack();
+		if (feedback.isEmpty())
+			throw new FeedBackNotFoundException();
+		return new ResponseEntity<>(feedback.toString(), HttpStatus.OK);
 	}
 
-	@GetMapping("/id-{id}")
+	@GetMapping("/id/{id}")
 	public ResponseEntity<String> viewFeedBack(@PathVariable int id){
-		return new ResponseEntity<>(feedBackService.viewFeedBack(id).toString(),HttpStatus.OK);
+		FeedBack feedback = feedBackService.viewFeedBack(id);
+		if (feedback == null)
+			throw new FeedBackNotFoundException();
+		return new ResponseEntity<>(feedback.toString(),HttpStatus.OK);
 	}
 	
-	@GetMapping("/sc-{schemeName}")
-	public ResponseEntity<List<FeedBack>> viewFeedBackBySchemeName(@PathVariable String schemeName){
-		return new ResponseEntity<>(feedBackService.viewFeedBackBySchemeName(schemeName),HttpStatus.OK);
+	@GetMapping("/sc/{schemeName}")
+	public ResponseEntity<String> viewFeedBackBySchemeName(@PathVariable String schemeName){
+		List<FeedBack> feedback = feedBackService.viewFeedBackBySchemeName(schemeName);
+		if (feedback.isEmpty())
+			throw new FeedBackNotFoundException();
+		return new ResponseEntity<>(feedback.toString(),HttpStatus.OK);
 	}
 	
-	@GetMapping("/cs-{trainingCourseName}")
-	public ResponseEntity<List<FeedBack>> viewFeedBackByTrainingCourseName(@PathVariable String trainingCourseName){
-		return new ResponseEntity<>(feedBackService.viewFeedBackByTrainingCourseName(trainingCourseName),HttpStatus.OK);
+	@GetMapping("/cs/{trainingCourseName}")
+	public ResponseEntity<String> viewFeedBackByTrainingCourseName(@PathVariable String trainingCourseName){
+		List<FeedBack> feedback = feedBackService.viewFeedBackByTrainingCourseName(trainingCourseName);
+		if (feedback.isEmpty())
+			throw new FeedBackNotFoundException();
+		return new ResponseEntity<>(feedback.toString(),HttpStatus.OK);
 	}
 }
