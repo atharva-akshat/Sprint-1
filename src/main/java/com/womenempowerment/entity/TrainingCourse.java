@@ -96,6 +96,13 @@ public class TrainingCourse {
 	public void setNgo(List<NGO> ngo) {
 		this.ngo = ngo;
 	}
+	@Override
+	public String toString() {
+		return "TrainingCourse [trainingCourseId=" + trainingCourseId + ", courseName=" + courseName
+				+ ", courseDuration=" + courseDuration + ", startingDate=" + startingDate + ", endingDate=" + endingDate
+				+ ", courseCompletionStatus=" + courseCompletionStatus + ", scheme=" + scheme.getSchemeId() + "]";
+	}
+	
 	
 }
 
