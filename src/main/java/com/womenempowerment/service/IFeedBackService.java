@@ -16,5 +16,5 @@ public interface IFeedBackService {
 
 	List<FeedBack> viewFeedBackBySchemeName(String schemeName);
 
-	List<FeedBack> viewFeedBackByTrainingCourseName();
+	List<FeedBack> viewFeedBackByTrainingCourseName(String trainingCourseName);
 }

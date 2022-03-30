@@ -31,4 +31,14 @@ public class FeedBackController {
 	public ResponseEntity<FeedBack> viewFeedBack(@PathVariable int id){
 		return new ResponseEntity<>(feedBackService.viewFeedBack(id),HttpStatus.OK);
 	}
+	
+	@GetMapping("/{schemeName}")
+	public ResponseEntity<List<FeedBack>> viewFeedBackBySchemeName(@PathVariable String schemeName){
+		return new ResponseEntity<>(feedBackService.viewFeedBackBySchemeName(schemeName),HttpStatus.OK);
+	}
+	
+	@GetMapping("/{trainingCourseName}")
+	public ResponseEntity<List<FeedBack>> viewFeedBackByTrainingCourseName(@PathVariable String trainingCourseName){
+		return new ResponseEntity<>(feedBackService.viewFeedBackByTrainingCourseName(trainingCourseName),HttpStatus.OK);
+	}
 }

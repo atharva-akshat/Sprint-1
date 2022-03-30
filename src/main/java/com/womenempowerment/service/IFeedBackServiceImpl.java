@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class IFeedBackServiceImpl implements IFeedBackService{
 
+	private static final int Iterable = 0;
+
 	@Autowired
 	IFeedBackDao feedbackDao;
 
@@ -58,13 +60,15 @@ public class IFeedBackServiceImpl implements IFeedBackService{
 
 	@Override
 	public List<FeedBack> viewFeedBackBySchemeName(String schemeName) {
-		return null;
+		List<FeedBack> feedback=feedbackDao.viewbySchemeName(schemeName);
+		return feedback;
 	}
 
 	@Override
-	public List<FeedBack> viewFeedBackByTrainingCourseName() {
+	public List<FeedBack> viewFeedBackByTrainingCourseName(String trainingCourseName) {
+		List<FeedBack> feedback=feedbackDao.viewbytrainingCourseName(trainingCourseName);
 		// TODO Auto-generated method stub
-		return null;
+		return feedback;
 	}
 
 }
