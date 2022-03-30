@@ -91,5 +91,19 @@ public class Scheme {
 	public void setTraining(List<TrainingCourse> training) {
 		this.training = training;
 	}
+
+	@Override
+	public String toString() {
+		return "Scheme{" +
+				"schemeId=" + schemeId +
+				", schemeName='" + schemeName + '\'' +
+				", schemeType='" + schemeType + '\'' +
+				", schemeLaunchDate=" + schemeLaunchDate +
+				", schemeEligibility='" + schemeEligibility + '\'' +
+				", schemeObjective='" + schemeObjective + '\'' +
+				", training=" + training +
+				", feedBacks=" + feedBacks +
+				'}';
+	}
 }
 

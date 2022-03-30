@@ -132,4 +132,22 @@ public class Trainee {
 	public void setFeedBack(List<FeedBack> feedBack) {
 		this.feedBack = feedBack;
 	}
+
+	@Override
+	public String toString() {
+		return "Trainee{" +
+				"traineeId=" + traineeId +
+				", userName='" + userName + '\'' +
+				", password='" + password + '\'' +
+				", firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", contact=" + contact +
+				", email='" + email + '\'' +
+				", familyInfo='" + familyInfo + '\'' +
+				", aadharNo=" + aadharNo +
+				", dob=" + dob +
+				", trainingCourse=" + trainingCourse +
+				", feedBack=" + feedBack +
+				'}';
+	}
 }
