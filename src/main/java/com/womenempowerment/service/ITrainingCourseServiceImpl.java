@@ -59,8 +59,7 @@ public class ITrainingCourseServiceImpl implements ITrainingCourseService{
     }
 
     @Override
-    public TrainingCourse viewByTrainingCourseName(String courseName) {
-    	System.out.println("Got "+courseName);
+    public List<TrainingCourse> viewByTrainingCourseName(String courseName) {
     	return courseDao.viewbyCourseName(courseName);
     }
 }
