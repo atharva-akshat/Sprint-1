@@ -1,7 +1,9 @@
 package com.womenempowerment.controller;
 
 import com.womenempowerment.dto.ITrainingCourseDto;
+import com.womenempowerment.entity.FeedBack;
 import com.womenempowerment.entity.TrainingCourse;
+import com.womenempowerment.exception.TrainingCourseNotFoundException;
 
 import java.util.List;
 
@@ -28,27 +30,34 @@ public class TrainingCourseController {
 		return new ResponseEntity<String>("Course added", HttpStatus.OK);
 	}
 	
-	@GetMapping("/view/{id}")
-	public String getCourseById(@PathVariable int id) {
+	@GetMapping("/viewById/{id}")
+	public ResponseEntity<String> getCourseById(@PathVariable int id) {
 		TrainingCourse course = service.viewTrainingCourse(id);
-		return course.toString();
+		if(course==null)
+			throw new TrainingCourseNotFoundException();
+		return new ResponseEntity<String>(course.toString(), HttpStatus.OK);
 	}
 	
 	@GetMapping
-	public String getAllCourses() {
+	public ResponseEntity<String> getAllCourses() {
 		List<TrainingCourse> courses= service.viewAllTrainingCourse();
-		return courses.toString();
+		return new ResponseEntity<String>(courses.toString(), HttpStatus.OK);
 	}
 	
 	@PostMapping("/delete/{id}")
 	public ResponseEntity<String> deleteCourse(@PathVariable int id){
+		TrainingCourse course = service.viewTrainingCourse(id);
+		if(course==null)
+			throw new TrainingCourseNotFoundException();
 		service.deleteTrainingCourse(id);
 		return new ResponseEntity<String>("Course deleted", HttpStatus.OK);
 	}
 	
-	@GetMapping("/{name}")
+	@GetMapping("/viewByName/{name}")
 	public ResponseEntity<String> courseByName(@PathVariable String name){
 		List<TrainingCourse> course= service.viewByTrainingCourseName(name);
+		if(course.size()==0)
+			throw new TrainingCourseNotFoundException();
 		return new ResponseEntity<String>(course.toString(), HttpStatus.OK);
 	}
 }

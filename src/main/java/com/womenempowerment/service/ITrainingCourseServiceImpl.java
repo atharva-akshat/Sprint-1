@@ -53,9 +53,7 @@ public class ITrainingCourseServiceImpl implements ITrainingCourseService{
 
     @Override
     public void deleteTrainingCourse(int courseId) {
-    	if(courseDao.existsById(courseId)) {
-    		courseDao.deleteById(courseId);
-    	}
+    	courseDao.deleteById(courseId);
     }
 
     @Override
