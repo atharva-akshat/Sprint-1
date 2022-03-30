@@ -48,7 +48,7 @@ public class TrainingCourseController {
 	
 	@GetMapping("/{name}")
 	public ResponseEntity<String> courseByName(@PathVariable String name){
-		TrainingCourse course= service.viewByTrainingCourseName(name);
+		List<TrainingCourse> course= service.viewByTrainingCourseName(name);
 		return new ResponseEntity<String>(course.toString(), HttpStatus.OK);
 	}
 }
