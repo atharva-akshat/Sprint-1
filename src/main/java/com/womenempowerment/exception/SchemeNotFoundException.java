@@ -5,5 +5,4 @@ public class SchemeNotFoundException extends RuntimeException{
 	public SchemeNotFoundException() {
 		super("Scheme does not exist!");
 	}
-
 }
