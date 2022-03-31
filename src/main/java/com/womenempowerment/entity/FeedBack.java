@@ -118,6 +118,7 @@ public class FeedBack {
 	public void setScheme(Scheme scheme) {
 		this.scheme = scheme;
 	}
+	
 
 	@Override
 	public String toString() {
@@ -128,9 +129,9 @@ public class FeedBack {
 				", overallRating=" + overallRating +
 				", comments='" + comments + '\'' +
 				", feedbackdate=" + feedbackdate +
-				", trainee=" + trainee +
-				", trainingCourse=" + trainingCourse +
-				", scheme=" + scheme +
+				", trainee=" + trainee.getTraineeId() +
+				", trainingCourse=" + trainingCourse.getTrainingCourseId() +
+				", scheme=" + scheme.getSchemeId() +
 				'}';
 	}
 }
