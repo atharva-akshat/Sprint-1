@@ -1,5 +1,6 @@
 package com.womenempowerment.service;
 
+import com.womenempowerment.dto.IForgotPasswordUserDto;
 import com.womenempowerment.entity.User;
 
 public interface IUserService  {
@@ -7,6 +8,6 @@ public interface IUserService  {
 
 	User login(String username, String password);
 
-	User forgotPassword(User user);
+	User forgotPassword(String username, IForgotPasswordUserDto password);
 
 }
