@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +29,14 @@ public class TrainingCourseController {
 	public ResponseEntity<String> addCourse(@RequestBody ITrainingCourseDto course) {
 		service.addTrainingCourse(course);
 		return new ResponseEntity<String>("Course added", HttpStatus.OK);
+	}
+	
+	@PutMapping("/update")
+	public ResponseEntity<String> updateCourse(@RequestBody ITrainingCourseDto course){
+		TrainingCourse c= service.updateTrainingCourse(course);
+		if(c==null)
+			throw new TrainingCourseNotFoundException();
+		return new ResponseEntity<String>("Course updated!", HttpStatus.OK);
 	}
 	
 	@GetMapping("/viewById/{id}")

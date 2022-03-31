@@ -8,7 +8,7 @@ import com.womenempowerment.entity.TrainingCourse;
 public interface ITrainingCourseService  {
 	TrainingCourse addTrainingCourse(ITrainingCourseDto course);
 
-	TrainingCourse updateTrainingCourse(TrainingCourse course);
+	TrainingCourse updateTrainingCourse(ITrainingCourseDto course);
 
 	TrainingCourse viewTrainingCourse(int courseId);
 

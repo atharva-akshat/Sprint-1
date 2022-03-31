@@ -37,8 +37,16 @@ public class ITrainingCourseServiceImpl implements ITrainingCourseService{
     }
 
     @Override
-    public TrainingCourse updateTrainingCourse(TrainingCourse course) {
-        return null;
+    public TrainingCourse updateTrainingCourse(ITrainingCourseDto course) {
+        TrainingCourse existingCourse= courseDao.findById(course.getTrainingCourseId()).orElse(null);
+        if(existingCourse==null)
+        	return null;
+        existingCourse.setCourseName(course.getCourseName());
+        existingCourse.setCourseDuration(course.getCourseDuration());
+        existingCourse.setCourseCompletionStatus(course.getCourseCompletionStatus());
+        existingCourse.setStartingDate(course.getStartingDate());
+        existingCourse.setEndingDate(course.getEndingDate());
+        return courseDao.save(existingCourse);
     }
 
     @Override
