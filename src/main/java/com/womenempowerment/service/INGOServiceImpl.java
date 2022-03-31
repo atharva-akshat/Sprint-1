@@ -42,7 +42,7 @@ public class INGOServiceImpl implements INGOService {
 	@Override
 	public NGO viewNGO(int ngoId) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.findById(ngoId).orElse(null);
 	}
 
 	@Override
