@@ -6,11 +6,13 @@ public class INgoDto {
  private String ngoLocation;
  private String ngoType;
  private String ngoMotive;
- private String ngoSize;
+ private int ngoSize;
  private String ngoActivities;
- 	public int getNgoId() {
+ private double donation;
+ 
+public int getNgoId() {
 	return ngoId;
- 		}
+}
 public void setNgoId(int ngoId) {
 	this.ngoId = ngoId;
 }
@@ -38,10 +40,10 @@ public String getNgoMotive() {
 public void setNgoMotive(String ngoMotive) {
 	this.ngoMotive = ngoMotive;
 }
-public String getNgoSize() {
+public int getNgoSize() {
 	return ngoSize;
 }
-public void setNgoSize(String ngoSize) {
+public void setNgoSize(int ngoSize) {
 	this.ngoSize = ngoSize;
 }
 public String getNgoActivities() {
@@ -50,6 +52,11 @@ public String getNgoActivities() {
 public void setNgoActivities(String ngoActivities) {
 	this.ngoActivities = ngoActivities;
 }
- 
+public double getDonation() {
+	return donation;
+}
+public void setDonation(double donation) {
+	this.donation = donation;
+}
  
 }

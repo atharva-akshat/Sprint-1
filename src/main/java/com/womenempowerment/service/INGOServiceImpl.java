@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.womenempowerment.dao.INGODao;
+import com.womenempowerment.dto.INgoDto;
 import com.womenempowerment.entity.NGO;
 
 @Service
@@ -15,9 +16,17 @@ public class INGOServiceImpl implements INGOService {
 	INGODao dao;
 
 	@Override
-	public NGO addNGO(NGO ngo) {
-		dao.save(ngo);
-		return null;
+	public NGO addNGO(INgoDto dto) {
+		NGO ngo= new NGO();
+		ngo.setNgoId(dto.getNgoId());
+		ngo.setNgoName(dto.getNgoName());
+		ngo.setNgoActivities(dto.getNgoActivities());
+		ngo.setDonation(dto.getDonation());
+		ngo.setNgoType(dto.getNgoType());
+		ngo.setNgoMotive(dto.getNgoMotive());
+		ngo.setNgoLocation(dto.getNgoLocation());
+		ngo.setNgoSize(dto.getNgoSize());
+		return dao.save(ngo);
 	}
 
 	@Override

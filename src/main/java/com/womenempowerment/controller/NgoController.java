@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.womenempowerment.dto.INgoDto;
 //import com.womenempowerment.dto.INgoDto;
 import com.womenempowerment.entity.NGO;
 import com.womenempowerment.service.INGOService;
@@ -23,10 +24,8 @@ public class NgoController {
 	INGOService ngoservice;
 	
 	@PostMapping("/add")
-	public ResponseEntity<String> addNgo(@RequestBody NGO ngo){
-	//public ResponseEntity<String> addNgo(@RequestBody INgoDto ngo){
-		//ngoservice.addINgoDto(ngo);
-		ngoservice.addNGO(ngo);
+	public ResponseEntity<String> addNgo(@RequestBody INgoDto dto){
+		ngoservice.addNGO(dto);
 		return new ResponseEntity<String>("Ngo Added!", HttpStatus.OK);
 	}
 }

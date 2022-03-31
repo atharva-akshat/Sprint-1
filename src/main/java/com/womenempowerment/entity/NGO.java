@@ -20,6 +20,7 @@ public class NGO {
 	private String ngoType;
 	@Column(name="ngoMotive",length=100)
 	private String ngoMotive;
+	@Column
 	private double donation;
 	@Column(name="ngoSize",length=3)
 	private int ngoSize;
