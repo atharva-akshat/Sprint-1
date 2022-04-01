@@ -9,7 +9,7 @@ import com.womenempowerment.entity.Scheme;
 public interface ISchemeService  {
 	Scheme addScheme(ISchemeDto scheme);
 
-	Scheme updateScheme(ISchemeDto scheme);
+	Scheme updateScheme(Scheme scheme);
 
 	Scheme viewScheme(int schemeId);
 
