@@ -32,12 +32,12 @@ public class ISchemeServiceImpl implements ISchemeService{
 
 	@Override
 	public Scheme viewScheme(int schemeId) {
-		return null;
+		return dao.findById(schemeId).orElse(null);
 	}
 
 	@Override
 	public List<Scheme> viewAllScheme(){
-		return null;
+		return dao.findAll();
 	}
 
 	@Override

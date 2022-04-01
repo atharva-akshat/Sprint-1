@@ -94,16 +94,11 @@ public class Scheme {
 
 	@Override
 	public String toString() {
-		return "Scheme{" +
-				"schemeId=" + schemeId +
-				", schemeName='" + schemeName + '\'' +
-				", schemeType='" + schemeType + '\'' +
-				", schemeLaunchDate=" + schemeLaunchDate +
-				", schemeEligibility='" + schemeEligibility + '\'' +
-				", schemeObjective='" + schemeObjective + '\'' +
-				", training=" + training +
-				", feedBacks=" + feedBacks +
-				'}';
+		return "Scheme [schemeId=" + schemeId + ", schemeName=" + schemeName + ", schemeType=" + schemeType
+				+ ", schemeLaunchDate=" + schemeLaunchDate + ", schemeEligibility=" + schemeEligibility
+				+ ", schemeObjective=" + schemeObjective + "]";
 	}
+
+	
 }
 

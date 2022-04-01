@@ -33,4 +33,9 @@ public class MainExceptionHandler {
         System.out.println(ex.getMessage());
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
+    @ExceptionHandler(value= SchemeNotFoundException.class)
+    public ResponseEntity<Object> exception(SchemeNotFoundException ex){
+        System.out.println(ex.getMessage());
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
 }
