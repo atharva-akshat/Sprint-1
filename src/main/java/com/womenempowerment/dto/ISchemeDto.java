@@ -10,8 +10,6 @@ public class ISchemeDto implements Serializable {
     private  LocalDate schemeLaunchDate;
     private  String schemeEligibility;
     private  String schemeObjective;
-    private  int trainingId;
-    private  int feedBacksId;
 
     public Integer getSchemeId() {
         return schemeId;
@@ -59,21 +57,5 @@ public class ISchemeDto implements Serializable {
 
     public void setSchemeObjective(String schemeObjective) {
         this.schemeObjective = schemeObjective;
-    }
-
-    public int getTrainingId() {
-        return trainingId;
-    }
-
-    public void setTrainingId(int trainingId) {
-        this.trainingId = trainingId;
-    }
-
-    public int getFeedBacksId() {
-        return feedBacksId;
-    }
-
-    public void setFeedBacksId(int feedBacksId) {
-        this.feedBacksId = feedBacksId;
     }
 }

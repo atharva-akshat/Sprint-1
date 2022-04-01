@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.womenempowerment.dao.ISchemeDao;
+import com.womenempowerment.dto.ISchemeDto;
 import com.womenempowerment.entity.Scheme;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,8 +14,15 @@ public class ISchemeServiceImpl implements ISchemeService{
 	@Autowired
 	ISchemeDao dao;
 	@Override
-	public Scheme addScheme(Scheme scheme) {
-		return dao.save(scheme);
+	public Scheme addScheme(ISchemeDto scheme) {
+		Scheme sc= new Scheme();
+		sc.setSchemeId(scheme.getSchemeId());
+		sc.setSchemeName(scheme.getSchemeName());
+		sc.setSchemeObjective(scheme.getSchemeObjective());
+		sc.setSchemeEligibility(scheme.getSchemeEligibility());
+		sc.setSchemeLaunchDate(scheme.getSchemeLaunchDate());
+		sc.setSchemeType(scheme.getSchemeType());
+		return dao.save(sc);
 	}
 
 	@Override

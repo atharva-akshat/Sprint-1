@@ -3,10 +3,11 @@ package com.womenempowerment.service;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.womenempowerment.dto.ISchemeDto;
 import com.womenempowerment.entity.Scheme;
 
 public interface ISchemeService  {
-	Scheme addScheme(Scheme scheme);
+	Scheme addScheme(ISchemeDto scheme);
 
 	Scheme updateScheme(Scheme scheme);
 

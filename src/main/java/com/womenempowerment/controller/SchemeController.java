@@ -1,5 +1,7 @@
 package com.womenempowerment.controller;
 
+import com.womenempowerment.dao.ISchemeDao;
+import com.womenempowerment.dto.ISchemeDto;
 import com.womenempowerment.entity.Scheme;
 import com.womenempowerment.service.ISchemeServiceImpl;
 
@@ -18,7 +20,7 @@ public class SchemeController {
 	ISchemeServiceImpl service;
 	
 	@PostMapping("/add")
-	public ResponseEntity<String> addScheme(@RequestBody Scheme scheme){
+	public ResponseEntity<String> addScheme(@RequestBody ISchemeDto scheme){
 		service.addScheme(scheme);
 		return new ResponseEntity<String>("Scheme Added!", HttpStatus.OK);
 	}
