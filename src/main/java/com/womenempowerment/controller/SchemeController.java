@@ -46,7 +46,7 @@ public class SchemeController {
 		List<Scheme> scheme=service.viewAllScheme();
 		if(scheme.isEmpty())
 			throw new SchemeNotFoundException();
-		return new ResponseEntity<String>(service.toString(), HttpStatus.OK);
+		return new ResponseEntity<String>(scheme.toString(), HttpStatus.OK);
 	}
 	
 	@GetMapping("/viewById/{id}")
