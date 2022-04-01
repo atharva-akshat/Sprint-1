@@ -1,7 +1,6 @@
 package com.womenempowerment.controller;
 
 import com.womenempowerment.dto.IFeedBackDto;
-import com.womenempowerment.dto.IFeedBackUpdateDto;
 import com.womenempowerment.entity.FeedBack;
 import com.womenempowerment.exception.FeedBackAlreadyExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +27,7 @@ public class FeedBackController {
 		return new ResponseEntity<>("Feedback Added!", HttpStatus.OK);
 	}
 	@PutMapping("/update")
-	public ResponseEntity<String> updateFeedBack(@RequestBody IFeedBackUpdateDto feedBack){
+	public ResponseEntity<String> updateFeedBack(@RequestBody IFeedBackDto feedBack){
 		FeedBack feedback = feedBackService.viewFeedBack(feedBack.getFeedBackId());
 		if (feedback == null)
 			throw new FeedBackNotFoundException();

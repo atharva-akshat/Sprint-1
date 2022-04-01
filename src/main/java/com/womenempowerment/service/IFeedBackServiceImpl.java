@@ -3,8 +3,8 @@ package com.womenempowerment.service;
 import java.util.List;
 import com.womenempowerment.dao.*;
 import com.womenempowerment.dto.IFeedBackDto;
-import com.womenempowerment.dto.IFeedBackUpdateDto;
 import com.womenempowerment.entity.*;
+import com.womenempowerment.exception.FeedBackNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,22 +42,16 @@ public class IFeedBackServiceImpl implements IFeedBackService{
 	}
 
 	@Override
-	public IFeedBackUpdateDto updateFeedBack(IFeedBackUpdateDto feedback) {
-			if (feedbackDao.existsById(feedback.getFeedBackId())){
-				FeedBack existingFeedBack = feedbackDao.findById(feedback.getFeedBackId()).get();
-				existingFeedBack.setFeedBackId(feedback.getFeedBackId());
-				existingFeedBack.setSchemeRating(feedback.getSchemeRating());
-				existingFeedBack.setSchemeTrainingRating(feedback.getSchemeTrainingRating());
-				existingFeedBack.setOverallRating(feedback.getOverallRating());
-				existingFeedBack.setComments(feedback.getComments());
-				existingFeedBack.setFeedbackdate(feedback.getFeedbackdate());
-				FeedBack updatedFeedBack = feedbackDao.save(existingFeedBack);
-				return new IFeedBackUpdateDto(updatedFeedBack.getFeedBackId(),updatedFeedBack.getSchemeRating(),
-						updatedFeedBack.getSchemeTrainingRating(),updatedFeedBack.getOverallRating(),
-						updatedFeedBack.getComments(), updatedFeedBack.getFeedbackdate());
-			}
-			else
-				return null;
+	public FeedBack updateFeedBack(IFeedBackDto feedback) {
+		FeedBack existingFeedBack = feedbackDao.findById(feedback.getFeedBackId()).get();
+		if (existingFeedBack==null)
+			throw new FeedBackNotFoundException();
+		existingFeedBack.setSchemeRating(feedback.getSchemeRating());
+		existingFeedBack.setSchemeTrainingRating(feedback.getSchemeTrainingRating());
+		existingFeedBack.setOverallRating(feedback.getOverallRating());
+		existingFeedBack.setComments(feedback.getComments());
+		existingFeedBack.setFeedbackdate(feedback.getFeedbackDate());
+		return feedbackDao.save(existingFeedBack);
 	}
 
 	@Override

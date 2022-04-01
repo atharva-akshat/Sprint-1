@@ -3,13 +3,12 @@ package com.womenempowerment.service;
 import java.util.List;
 
 import com.womenempowerment.dto.IFeedBackDto;
-import com.womenempowerment.dto.IFeedBackUpdateDto;
 import com.womenempowerment.entity.FeedBack;
 
 public interface IFeedBackService {
 	FeedBack addFeedBack(IFeedBackDto feedBackDto);
 
-	IFeedBackUpdateDto updateFeedBack(IFeedBackUpdateDto feedBack);
+	FeedBack updateFeedBack(IFeedBackDto feedBack);
 
 	FeedBack viewFeedBack(int feedbackId);
 
