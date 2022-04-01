@@ -1,5 +1,6 @@
 package com.womenempowerment.controller;
 
+import com.womenempowerment.dto.ITraineeDto;
 import com.womenempowerment.entity.Trainee;
 import com.womenempowerment.service.ITraineeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class TraineeController {
     ITraineeServiceImpl service;
 
     @PostMapping("/add")
-    public ResponseEntity<String> addTrainee(@RequestBody Trainee trainee){
+    public ResponseEntity<String> addTrainee(@RequestBody ITraineeDto trainee){
         service.addTrainee(trainee);
         return new ResponseEntity<String>("Trainee Added!", HttpStatus.OK);
     }

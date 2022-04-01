@@ -14,8 +14,6 @@ public class ITraineeDto implements Serializable {
     private  String familyInfo;
     private  long aadharNo;
     private  LocalDate dob;
-    private  int trainingCourseId;
-    private  int feedBackId;
 
     public Integer getTraineeId() {
         return traineeId;
@@ -97,19 +95,4 @@ public class ITraineeDto implements Serializable {
         this.dob = dob;
     }
 
-    public int getTrainingCourseId() {
-        return trainingCourseId;
-    }
-
-    public void setTrainingCourseId(int trainingCourseId) {
-        this.trainingCourseId = trainingCourseId;
-    }
-
-    public int getFeedBackId() {
-        return feedBackId;
-    }
-
-    public void setFeedBackId(int feedBackId) {
-        this.feedBackId = feedBackId;
-    }
 }

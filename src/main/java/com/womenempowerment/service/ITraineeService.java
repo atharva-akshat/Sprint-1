@@ -2,10 +2,11 @@ package com.womenempowerment.service;
 
 import java.util.List;
 
+import com.womenempowerment.dto.ITraineeDto;
 import com.womenempowerment.entity.Trainee;
 
 public interface ITraineeService  {
-	Trainee addTrainee(Trainee course);
+	Trainee addTrainee(ITraineeDto course);
 
 	Trainee updateTrainee(Trainee course);
 

@@ -33,7 +33,7 @@ public class UserController {
 		User u= service.login(user.getUsername(), user.getPassword());
 		if(u==null)
 			throw new InvalidUserException();
-		return new ResponseEntity<String>("Successfully Logged in!", HttpStatus.OK);
+		return new ResponseEntity<String>("Welcome "+u.getUserName(), HttpStatus.OK);
 	}
 	
 	@PutMapping("/forgotPassword/{username}")
