@@ -4,63 +4,82 @@ import com.womenempowerment.dao.IFeedBackDao;
 import com.womenempowerment.dao.ITraineeDao;
 import com.womenempowerment.dao.ITrainingCourseDao;
 import com.womenempowerment.dto.ITraineeDto;
-import com.womenempowerment.entity.FeedBack;
 import com.womenempowerment.entity.Trainee;
-import com.womenempowerment.entity.TrainingCourse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
 public class ITraineeServiceImpl implements ITraineeService{
     @Autowired
     ITraineeDao dao;
+
+    @Autowired
+    ITrainingCourseDao trainingDao;
+
+    @Autowired
+    IFeedBackDao feedbackDao;
     
     @Override
-    public Trainee addTrainee(ITraineeDto trainee) {
-    	Trainee t= new Trainee();
-    	t.setAadharNo(trainee.getAadharNo());
-    	t.setContact(trainee.getContact());
-    	t.setDob(trainee.getDob());
-    	t.setEmail(trainee.getEmail());
-    	t.setFamilyInfo(trainee.getFamilyInfo());
-    	t.setTraineeId(trainee.getTraineeId());
-    	t.setUserName(trainee.getUserName());
-    	t.setPassword(trainee.getPassword());
-    	t.setFirstName(trainee.getFirstName());
-    	t.setLastName(trainee.getLastName());
-        return dao.save(t);
+    public Trainee addTrainee(ITraineeDto traineeDto) {
+    	Trainee trainee= new Trainee();
+        trainee.setTraineeId(traineeDto.getTraineeId());
+    	trainee.setAadharNo(traineeDto.getAadharNo());
+    	trainee.setContact(traineeDto.getContact());
+    	trainee.setDob(traineeDto.getDob());
+    	trainee.setEmail(traineeDto.getEmail());
+    	trainee.setFamilyInfo(traineeDto.getFamilyInfo());
+    	trainee.setUserName(traineeDto.getUserName());
+    	trainee.setPassword(traineeDto.getPassword());
+    	trainee.setFirstName(traineeDto.getFirstName());
+    	trainee.setLastName(traineeDto.getLastName());
+        trainee.setLocation(traineeDto.getLocation());
+        trainee.setTrainingCourse(trainingDao.findAllById(Collections.singleton(traineeDto.getTrainingCourseId())));
+        trainee.setFeedBack(feedbackDao.findAllById(Collections.singleton(traineeDto.getFeedbackId())));
+        return dao.save(trainee);
     }
 
     @Override
-    public Trainee updateTrainee(Trainee course) {
-        return null;
+    public Trainee updateTrainee(ITraineeDto traineeDto) {
+        Trainee existingTrainee = dao.findById(traineeDto.getTraineeId()).get();
+        existingTrainee.setAadharNo(traineeDto.getAadharNo());
+        existingTrainee.setContact(traineeDto.getContact());
+        existingTrainee.setDob(traineeDto.getDob());
+        existingTrainee.setEmail(traineeDto.getEmail());
+        existingTrainee.setFamilyInfo(traineeDto.getFamilyInfo());
+        existingTrainee.setUserName(traineeDto.getUserName());
+        existingTrainee.setPassword(traineeDto.getPassword());
+        existingTrainee.setFirstName(traineeDto.getFirstName());
+        existingTrainee.setLastName(traineeDto.getLastName());
+        existingTrainee.setLocation(traineeDto.getLocation());
+        return dao.save(existingTrainee);
     }
 
+
     @Override
-    public Trainee viewTrainee(int courseId) {
-        return null;
+    public Trainee viewTrainee(int traineeId) {
+        return dao.findById(traineeId).orElse(null);
     }
 
     @Override
     public List<Trainee> viewAllTrainee() {
-        return null;
+        return dao.findAll();
     }
 
     @Override
-    public void deleteTrainee(int courseId) {
-
+    public void deleteTrainee(int traineeId) {
+        dao.deleteById(traineeId);
     }
 
     @Override
     public List<Trainee> viewAllTraineesByLocation(String location) {
-        return null;
+        return dao.findByLocation(location);
     }
 
     @Override
     public Trainee viewTraineeByAadhar(long aadharNo) {
-        return null;
+        return dao.findByAadharNo(aadharNo);
     }
 }

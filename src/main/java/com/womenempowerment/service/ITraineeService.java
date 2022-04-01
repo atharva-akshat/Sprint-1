@@ -6,15 +6,15 @@ import com.womenempowerment.dto.ITraineeDto;
 import com.womenempowerment.entity.Trainee;
 
 public interface ITraineeService  {
-	Trainee addTrainee(ITraineeDto course);
+	Trainee addTrainee(ITraineeDto trainee);
 
-	Trainee updateTrainee(Trainee course);
+	Trainee updateTrainee(ITraineeDto trainee);
 
-	Trainee viewTrainee(int courseId);
+	Trainee viewTrainee(int traineeId);
 
 	List<Trainee> viewAllTrainee();
 
-	void deleteTrainee(int courseId);
+	void deleteTrainee(int traineeId);
 
 	List<Trainee> viewAllTraineesByLocation(String location);
 

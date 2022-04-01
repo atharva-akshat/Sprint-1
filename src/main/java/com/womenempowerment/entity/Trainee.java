@@ -29,6 +29,8 @@ public class Trainee {
 	private long aadharNo;
 	@Column
 	private LocalDate dob;
+	@Column(length = 50)
+	private  String location;
 
 	@ManyToMany(mappedBy="trainee")
 	private List<TrainingCourse> trainingCourse;
@@ -36,6 +38,13 @@ public class Trainee {
 	@OneToMany(mappedBy = "trainee")
 	private List<FeedBack> feedBack;
 
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
 
 	public Integer getTraineeId() {
 		return traineeId;
@@ -146,6 +155,7 @@ public class Trainee {
 				", familyInfo='" + familyInfo + '\'' +
 				", aadharNo=" + aadharNo +
 				", dob=" + dob +
+				", location='" + location + '\'' +
 				", trainingCourse=" + trainingCourse +
 				", feedBack=" + feedBack +
 				'}';

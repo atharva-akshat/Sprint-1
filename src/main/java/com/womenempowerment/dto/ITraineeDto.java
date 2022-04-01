@@ -14,6 +14,33 @@ public class ITraineeDto implements Serializable {
     private  String familyInfo;
     private  long aadharNo;
     private  LocalDate dob;
+    private  String location;
+    private Integer trainingCourseId;
+    private Integer feedbackId;
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Integer getTrainingCourseId() {
+        return trainingCourseId;
+    }
+
+    public void setTrainingCourseId(Integer trainingCourseId) {
+        this.trainingCourseId = trainingCourseId;
+    }
+
+    public Integer getFeedbackId() {
+        return feedbackId;
+    }
+
+    public void setFeedbackId(Integer feedbackId) {
+        this.feedbackId = feedbackId;
+    }
 
     public Integer getTraineeId() {
         return traineeId;
