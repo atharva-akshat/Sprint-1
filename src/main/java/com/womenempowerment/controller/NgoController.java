@@ -1,5 +1,6 @@
 package com.womenempowerment.controller;
 
+import com.womenempowerment.exception.NGOAlreadyExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +22,16 @@ public class NgoController {
 	
 	@PostMapping("/add")
 	public ResponseEntity<String> addNgo(@RequestBody INgoDto dto){
+		if(ngoservice.viewNGO(dto.getNgoId())!=null)
+			throw new NGOAlreadyExistsException();
 		ngoservice.addNGO(dto);
 		return new ResponseEntity<>("Ngo Added!", HttpStatus.OK);
 	}
 
 	@PutMapping("/update")
 	public ResponseEntity<String> updateNgo(@RequestBody INgoDto dto){
+		if(ngoservice.viewNGO(dto.getNgoId())==null)
+			throw new NGONotFoundException();
 		ngoservice.updateNGO(dto);
 		return new ResponseEntity<>("Ngo Updated!", HttpStatus.OK);
 	}
@@ -63,8 +68,7 @@ public class NgoController {
 
 	@DeleteMapping("/delete")
 	public ResponseEntity<String> deleteNGO(@RequestBody int ngoId){
-		NGO ngo = ngoservice.viewNGO(ngoId);
-		if(ngo==null)
+		if(ngoservice.viewNGO(ngoId)==null)
 			throw new NGONotFoundException();
 		ngoservice.deleteNGO(ngoId);
 		return new ResponseEntity<>("Ngo deleted", HttpStatus.OK);

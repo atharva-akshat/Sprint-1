@@ -2,10 +2,7 @@ package com.womenempowerment.service;
 
 import java.util.Collections;
 import java.util.List;
-
 import com.womenempowerment.dao.ITrainingCourseDao;
-import com.womenempowerment.exception.FeedBackNotFoundException;
-import com.womenempowerment.exception.NGONotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.womenempowerment.dao.INGODao;
@@ -39,8 +36,6 @@ public class INGOServiceImpl implements INGOService {
 	@Override
 	public NGO updateNGO(INgoDto ngo) {
 		NGO existingNgo = dao.findById(ngo.getNgoId()).get();
-		if (existingNgo==null)
-			throw new NGONotFoundException();
 		existingNgo.setNgoName(ngo.getNgoName());
 		existingNgo.setNgoActivities(ngo.getNgoActivities());
 		existingNgo.setDonation(ngo.getDonation());
