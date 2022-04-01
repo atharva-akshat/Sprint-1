@@ -9,8 +9,17 @@ public class INgoDto {
  private int ngoSize;
  private String ngoActivities;
  private double donation;
- 
-public int getNgoId() {
+ private int trainingCourseId;
+
+	public int getTrainingCourseId() {
+		return trainingCourseId;
+	}
+
+	public void setTrainingCourseId(int trainingCourseId) {
+		this.trainingCourseId = trainingCourseId;
+	}
+
+	public int getNgoId() {
 	return ngoId;
 }
 public void setNgoId(int ngoId) {

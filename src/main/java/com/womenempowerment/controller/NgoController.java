@@ -3,22 +3,12 @@ package com.womenempowerment.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.womenempowerment.dto.INgoDto;
-//import com.womenempowerment.dto.INgoDto;
 import com.womenempowerment.entity.NGO;
-import com.womenempowerment.entity.TrainingCourse;
 import com.womenempowerment.exception.NGONotFoundException;
-import com.womenempowerment.exception.TrainingCourseNotFoundException;
 import com.womenempowerment.service.INGOService;
-//import com.womenempowerment.service.INGOServiceImpl;
+import java.util.List;
 
 
 
@@ -32,24 +22,51 @@ public class NgoController {
 	@PostMapping("/add")
 	public ResponseEntity<String> addNgo(@RequestBody INgoDto dto){
 		ngoservice.addNGO(dto);
-		return new ResponseEntity<String>("Ngo Added!", HttpStatus.OK);
-	}
-	
-	@GetMapping("/viewById/{id}")
-	public ResponseEntity<String> getNgoById(@PathVariable int id) {
-		NGO dto = ngoservice.viewNGO(id);
-		if(dto==null)
-			throw new NGONotFoundException();
-		return new ResponseEntity<String>(dto.toString(), HttpStatus.OK);
+		return new ResponseEntity<>("Ngo Added!", HttpStatus.OK);
 	}
 
-	@DeleteMapping("/delete/{ngoId}")
-	public ResponseEntity<String> deleteNGO(@PathVariable int ngoId){
+	@PutMapping("/update")
+	public ResponseEntity<String> updateNgo(@RequestBody INgoDto dto){
+		ngoservice.updateNGO(dto);
+		return new ResponseEntity<>("Ngo Updated!", HttpStatus.OK);
+	}
+	@GetMapping
+	public ResponseEntity<String> getAllNgo() {
+		List<NGO> ngo = ngoservice.viewAllNGO();
+		if(ngo.isEmpty())
+			throw new NGONotFoundException();
+		return new ResponseEntity<>(ngo.toString(), HttpStatus.OK);
+	}
+	@GetMapping("/viewById/{id}")
+	public ResponseEntity<String> getNgoById(@PathVariable int id) {
+		NGO ngo = ngoservice.viewNGO(id);
+		if(ngo==null)
+			throw new NGONotFoundException();
+		return new ResponseEntity<>(ngo.toString(), HttpStatus.OK);
+	}
+
+	@GetMapping("/viewByLocation/{location}")
+	public ResponseEntity<String> getNgoByLocation(@PathVariable String location) {
+		List<NGO> ngo = ngoservice.viewNGOByLocation(location);
+		if(ngo.isEmpty())
+			throw new NGONotFoundException();
+		return new ResponseEntity<>(ngo.toString(), HttpStatus.OK);
+	}
+
+	@GetMapping("/viewByMotive/{motive}")
+	public ResponseEntity<String> getNgoByMotive(@PathVariable String motive) {
+		List<NGO> ngo = ngoservice.viewNGOByMotive(motive);
+		if(ngo.isEmpty())
+			throw new NGONotFoundException();
+		return new ResponseEntity<>(ngo.toString(), HttpStatus.OK);
+	}
+
+	@DeleteMapping("/delete")
+	public ResponseEntity<String> deleteNGO(@RequestBody int ngoId){
 		NGO ngo = ngoservice.viewNGO(ngoId);
 		if(ngo==null)
 			throw new NGONotFoundException();
 		ngoservice.deleteNGO(ngoId);
-		return new ResponseEntity<String>("Ngo deleted", HttpStatus.OK);
+		return new ResponseEntity<>("Ngo deleted", HttpStatus.OK);
 	}
-
 }

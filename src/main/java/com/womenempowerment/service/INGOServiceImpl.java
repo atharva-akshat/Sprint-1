@@ -1,10 +1,12 @@
 package com.womenempowerment.service;
 
+import java.util.Collections;
 import java.util.List;
 
+import com.womenempowerment.dao.ITrainingCourseDao;
+import com.womenempowerment.exception.NGONotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.womenempowerment.dao.INGODao;
 import com.womenempowerment.dto.INgoDto;
 import com.womenempowerment.entity.NGO;
@@ -14,6 +16,9 @@ public class INGOServiceImpl implements INGOService {
 	
 	@Autowired
 	INGODao dao;
+
+	@Autowired
+	ITrainingCourseDao trainingDao;
 
 	@Override
 	public NGO addNGO(INgoDto dto) {
@@ -26,49 +31,47 @@ public class INGOServiceImpl implements INGOService {
 		ngo.setNgoMotive(dto.getNgoMotive());
 		ngo.setNgoLocation(dto.getNgoLocation());
 		ngo.setNgoSize(dto.getNgoSize());
+		ngo.setTrainingCourse(trainingDao.findAllById(Collections.singleton(dto.getTrainingCourseId())));
 		return dao.save(ngo);
 	}
 
 	@Override
-	public NGO updateNGO(NGO ngo) {
-		// TODO Auto-generated method stub
-		if(dao.existsById(ngo.getNgoId())) {
-			dao.deleteById(ngo.getNgoId());
-			dao.save(ngo);
-		}
+	public NGO updateNGO(INgoDto ngo) {
+		NGO existingNgo = dao.findById(ngo.getNgoId()).get();
+		existingNgo.setNgoName(ngo.getNgoName());
+		existingNgo.setNgoActivities(ngo.getNgoActivities());
+		existingNgo.setDonation(ngo.getDonation());
+		existingNgo.setNgoType(ngo.getNgoType());
+		existingNgo.setNgoMotive(ngo.getNgoMotive());
+		existingNgo.setNgoLocation(ngo.getNgoLocation());
+		existingNgo.setNgoSize(ngo.getNgoSize());
 		return null;
 	}
 
 	@Override
 	public NGO viewNGO(int ngoId) {
-		// TODO Auto-generated method stub
 		return dao.findById(ngoId).orElse(null);
 	}
 
 	@Override
 	public List<NGO> viewAllNGO() {
-		// TODO Auto-generated method stub
 		return dao.findAll();
-		//return null;
 	}
 
 	@Override
 	public void deleteNGO(int ngoId) {
-		// TODO Auto-generated method stub
 		dao.deleteById(ngoId);
 		
 	}
 
 	@Override
 	public List<NGO> viewNGOByMotive(String motive) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.findByNgoMotive(motive);
 	}
 
 	@Override
 	public List<NGO> viewNGOByLocation(String location) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.findByNgoLocation(location);
 	}
 
 }

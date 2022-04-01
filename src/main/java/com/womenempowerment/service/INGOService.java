@@ -10,7 +10,7 @@ public interface INGOService  {
 	
 	NGO addNGO(INgoDto ngo);
 
-	NGO updateNGO(NGO ngo);
+	NGO updateNGO(INgoDto ngo);
 
 	NGO viewNGO(int ngoId);
 
