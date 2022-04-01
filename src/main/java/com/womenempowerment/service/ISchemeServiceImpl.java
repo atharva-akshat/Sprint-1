@@ -26,8 +26,17 @@ public class ISchemeServiceImpl implements ISchemeService{
 	}
 
 	@Override
-	public Scheme updateScheme(Scheme scheme) {
-		return null;
+	public Scheme updateScheme(ISchemeDto scheme) {
+		Scheme existingscheme= dao.findById(scheme.getSchemeId()).orElse(null);
+		if(existingscheme==null)
+			return null;
+		existingscheme.setSchemeName(scheme.getSchemeName());
+		existingscheme.setSchemeObjective(scheme.getSchemeObjective());
+		existingscheme.setSchemeEligibility(scheme.getSchemeEligibility());
+		existingscheme.setSchemeLaunchDate(scheme.getSchemeLaunchDate());
+		existingscheme.setSchemeType(scheme.getSchemeEligibility());
+		
+		return dao.save(existingscheme);
 	}
 
 	@Override

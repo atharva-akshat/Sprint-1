@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +32,21 @@ public class SchemeController {
 		return new ResponseEntity<String>("Scheme Added!", HttpStatus.OK);
 	}
 	
+	@PostMapping("/update")
+	public ResponseEntity<String> updateScheme(@RequestBody ISchemeDto scheme){
+		service.updateScheme(scheme);
+		if(scheme==null)
+			throw new SchemeNotFoundException();
+		service.updateScheme(scheme);
+		return new ResponseEntity<>("Scheme Updated!",HttpStatus.OK);
+	}
+	
 	@GetMapping
-	public ResponseEntity<String> viewAll(){
-		return new ResponseEntity<String>(service.viewAllScheme().toString(), HttpStatus.OK);
+	public ResponseEntity<String> viewAllSchemes(){
+		List<Scheme> scheme=service.viewAllScheme();
+		if(scheme.isEmpty())
+			throw new SchemeNotFoundException();
+		return new ResponseEntity<String>(service.toString(), HttpStatus.OK);
 	}
 	
 	@GetMapping("/viewById/{id}")
@@ -42,5 +55,30 @@ public class SchemeController {
 		if(scheme==null)
 			throw new SchemeNotFoundException();
 		return new ResponseEntity<String>(scheme.toString(), HttpStatus.OK);
+	}
+	
+	@GetMapping("/delete{id}")
+	public ResponseEntity<String> deleteScheme(@PathVariable int id){
+		Scheme scheme=service.viewScheme(id);
+		if(scheme==null)
+			throw new SchemeNotFoundException();
+		service.deleteScheme(id);
+		return new ResponseEntity<String>("Scheme deleted!",HttpStatus.OK);
+	}
+	
+	@GetMapping("/viewByType{type}")
+	public ResponseEntity<String> getSchemeByType(@PathVariable String type){
+		List<Scheme> scheme=service.viewSchemesByType(type);
+		if(scheme.isEmpty())
+			throw new SchemeNotFoundException();
+		return new ResponseEntity<String>(scheme.toString(),HttpStatus.OK);
+	}
+	
+	@GetMapping("/viewByLaunchDate{launchdate}")
+	public ResponseEntity<String> getSchemeByLaunchDate(@PathVariable LocalDate launchdate){
+		List<Scheme> scheme=service.viewSchemeByLaunchDate(launchdate);
+		if(scheme.isEmpty())
+			throw new SchemeNotFoundException();
+		return new ResponseEntity<String>(scheme.toString(),HttpStatus.OK);
 	}
 }
