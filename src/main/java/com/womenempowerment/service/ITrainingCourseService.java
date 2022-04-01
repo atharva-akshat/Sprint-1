@@ -1,21 +1,21 @@
 package com.womenempowerment.service;
 
-import java.util.List;
-
 import com.womenempowerment.dto.ITrainingCourseDto;
 import com.womenempowerment.entity.TrainingCourse;
 
-public interface ITrainingCourseService  {
-	TrainingCourse addTrainingCourse(ITrainingCourseDto course);
+import java.util.List;
 
-	TrainingCourse updateTrainingCourse(ITrainingCourseDto course);
+public interface ITrainingCourseService {
+    TrainingCourse addTrainingCourse(ITrainingCourseDto course);
 
-	TrainingCourse viewTrainingCourse(int courseId);
+    TrainingCourse updateTrainingCourse(ITrainingCourseDto course);
 
-	List<TrainingCourse> viewAllTrainingCourse();
+    TrainingCourse viewTrainingCourse(int courseId);
 
-	void deleteTrainingCourse(int courseId);
+    List<TrainingCourse> viewAllTrainingCourse();
 
-	List<TrainingCourse> viewByTrainingCourseName(String courseName);
+    void deleteTrainingCourse(int courseId);
+
+    List<TrainingCourse> viewByTrainingCourseName(String courseName);
 
 }

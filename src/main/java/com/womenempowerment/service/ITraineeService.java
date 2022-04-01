@@ -1,23 +1,23 @@
 package com.womenempowerment.service;
 
-import java.util.List;
-
 import com.womenempowerment.dto.ITraineeDto;
 import com.womenempowerment.entity.Trainee;
 
-public interface ITraineeService  {
-	Trainee addTrainee(ITraineeDto trainee);
+import java.util.List;
 
-	Trainee updateTrainee(ITraineeDto trainee);
+public interface ITraineeService {
+    Trainee addTrainee(ITraineeDto trainee);
 
-	Trainee viewTrainee(int traineeId);
+    Trainee updateTrainee(ITraineeDto trainee);
 
-	List<Trainee> viewAllTrainee();
+    Trainee viewTrainee(int traineeId);
 
-	void deleteTrainee(int traineeId);
+    List<Trainee> viewAllTrainee();
 
-	List<Trainee> viewAllTraineesByLocation(String location);
+    void deleteTrainee(int traineeId);
 
-	Trainee viewTraineeByAadhar(long aadharNo);
+    List<Trainee> viewAllTraineesByLocation(String location);
+
+    Trainee viewTraineeByAadhar(long aadharNo);
 
 }

@@ -1,23 +1,23 @@
 package com.womenempowerment.service;
 
-import java.time.LocalDate;
-import java.util.List;
-
 import com.womenempowerment.dto.ISchemeDto;
 import com.womenempowerment.entity.Scheme;
 
-public interface ISchemeService  {
-	Scheme addScheme(ISchemeDto scheme);
+import java.time.LocalDate;
+import java.util.List;
 
-	Scheme updateScheme(ISchemeDto scheme);
+public interface ISchemeService {
+    Scheme addScheme(ISchemeDto scheme);
 
-	Scheme viewScheme(int schemeId);
+    Scheme updateScheme(ISchemeDto scheme);
 
-	List<Scheme> viewAllScheme();
+    Scheme viewScheme(int schemeId);
 
-	void deleteScheme(int schemeId);
+    List<Scheme> viewAllScheme();
 
-	List<Scheme> viewSchemesByType(String schemeType);
+    void deleteScheme(int schemeId);
 
-	List<Scheme> viewSchemeByLaunchDate(LocalDate date);
+    List<Scheme> viewSchemesByType(String schemeType);
+
+    List<Scheme> viewSchemeByLaunchDate(LocalDate date);
 }

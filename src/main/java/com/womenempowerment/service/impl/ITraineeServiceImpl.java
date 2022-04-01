@@ -1,10 +1,11 @@
-package com.womenempowerment.service;
+package com.womenempowerment.service.impl;
 
 import com.womenempowerment.dao.IFeedBackDao;
 import com.womenempowerment.dao.ITraineeDao;
 import com.womenempowerment.dao.ITrainingCourseDao;
 import com.womenempowerment.dto.ITraineeDto;
 import com.womenempowerment.entity.Trainee;
+import com.womenempowerment.service.ITraineeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
-public class ITraineeServiceImpl implements ITraineeService{
+public class ITraineeServiceImpl implements ITraineeService {
     @Autowired
     ITraineeDao dao;
 
@@ -21,20 +22,20 @@ public class ITraineeServiceImpl implements ITraineeService{
 
     @Autowired
     IFeedBackDao feedbackDao;
-    
+
     @Override
     public Trainee addTrainee(ITraineeDto traineeDto) {
-    	Trainee trainee= new Trainee();
+        Trainee trainee = new Trainee();
         trainee.setTraineeId(traineeDto.getTraineeId());
-    	trainee.setAadharNo(traineeDto.getAadharNo());
-    	trainee.setContact(traineeDto.getContact());
-    	trainee.setDob(traineeDto.getDob());
-    	trainee.setEmail(traineeDto.getEmail());
-    	trainee.setFamilyInfo(traineeDto.getFamilyInfo());
-    	trainee.setUserName(traineeDto.getUserName());
-    	trainee.setPassword(traineeDto.getPassword());
-    	trainee.setFirstName(traineeDto.getFirstName());
-    	trainee.setLastName(traineeDto.getLastName());
+        trainee.setAadharNo(traineeDto.getAadharNo());
+        trainee.setContact(traineeDto.getContact());
+        trainee.setDob(traineeDto.getDob());
+        trainee.setEmail(traineeDto.getEmail());
+        trainee.setFamilyInfo(traineeDto.getFamilyInfo());
+        trainee.setUserName(traineeDto.getUserName());
+        trainee.setPassword(traineeDto.getPassword());
+        trainee.setFirstName(traineeDto.getFirstName());
+        trainee.setLastName(traineeDto.getLastName());
         trainee.setLocation(traineeDto.getLocation());
         trainee.setTrainingCourse(trainingDao.findAllById(Collections.singleton(traineeDto.getTrainingCourseId())));
         trainee.setFeedBack(feedbackDao.findAllById(Collections.singleton(traineeDto.getFeedbackId())));
