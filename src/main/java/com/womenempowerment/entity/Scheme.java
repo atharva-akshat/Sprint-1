@@ -10,15 +10,15 @@ public class Scheme {
 	@Id
 	@Column(name= "id", length = 4)
 	private Integer schemeId;
-	@Column(name="schemename", length = 25)
+	@Column(name="schemeName", length = 25)
 	private String schemeName;
-	@Column(name="type", length=25)
+	@Column(name="schemeType", length=25)
 	private String schemeType;
-	@Column(name="launchdate")
+	@Column(name="schemeLaunchDate")
 	private LocalDate schemeLaunchDate;
-	@Column(name="eligibility")
+	@Column(name="schemeEligibility")
 	private String schemeEligibility;
-	@Column(name="objective")
+	@Column(name="schemeObjective")
 	private String schemeObjective;
 
 	@OneToMany(mappedBy = "scheme")

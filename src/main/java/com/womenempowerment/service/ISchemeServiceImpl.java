@@ -3,6 +3,7 @@ package com.womenempowerment.service;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.womenempowerment.dao.IFeedBackDao;
 import com.womenempowerment.dao.ISchemeDao;
 import com.womenempowerment.dto.ISchemeDto;
 import com.womenempowerment.entity.Scheme;
@@ -13,6 +14,10 @@ import org.springframework.stereotype.Service;
 public class ISchemeServiceImpl implements ISchemeService{
 	@Autowired
 	ISchemeDao dao;
+	
+	@Autowired 
+	IFeedBackDao feedbackdao;
+	
 	@Override
 	public Scheme addScheme(ISchemeDto scheme) {
 		Scheme sc= new Scheme();
@@ -51,16 +56,16 @@ public class ISchemeServiceImpl implements ISchemeService{
 
 	@Override
 	public void deleteScheme(int schemeId) {
-		
+		dao.deleteById(schemeId);
 	}
 
 	@Override
 	public List<Scheme> viewSchemesByType(String schemeType){
-		return null;
+		return dao.findByType(schemeType);
 	}
 
 	@Override
 	public List<Scheme> viewSchemeByLaunchDate(LocalDate date){
-		return null;
+		return dao.findByLaunchDate(date);
 	}
 }
