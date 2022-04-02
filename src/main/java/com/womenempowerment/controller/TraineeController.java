@@ -1,10 +1,13 @@
 package com.womenempowerment.controller;
 
 import com.womenempowerment.dto.ITraineeDto;
+import com.womenempowerment.entity.FeedBack;
 import com.womenempowerment.entity.Trainee;
+import com.womenempowerment.exception.FeedBackAlreadyExistsException;
+import com.womenempowerment.exception.FeedBackNotFoundException;
 import com.womenempowerment.exception.InvalidUserException;
 import com.womenempowerment.exception.UserNotFoundException;
-import com.womenempowerment.service.impl.ITraineeServiceImpl;
+import com.womenempowerment.service.ITraineeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +23,7 @@ public class TraineeController {
     ITraineeServiceImpl service;
 
     @PostMapping("/add")
-    public ResponseEntity<String> addTrainee(@RequestBody ITraineeDto traineeDto) {
+    public ResponseEntity<String> addTrainee(@RequestBody ITraineeDto traineeDto){
         Trainee trainee = service.viewTrainee(traineeDto.getTraineeId());
         if (trainee != null)
             throw new InvalidUserException();
@@ -29,7 +32,7 @@ public class TraineeController {
     }
 
     @GetMapping
-    public ResponseEntity<String> viewAllTrainee() {
+    public ResponseEntity<String> viewAllTrainee(){
         List<Trainee> trainee = service.viewAllTrainee();
         if (trainee.isEmpty())
             throw new UserNotFoundException();
@@ -37,33 +40,32 @@ public class TraineeController {
     }
 
     @GetMapping("/id/{id}")
-    public ResponseEntity<String> viewTrainee(@PathVariable int id) {
+    public ResponseEntity<String> viewTrainee(@PathVariable int id){
         Trainee trainee = service.viewTrainee(id);
         if (trainee == null)
             throw new UserNotFoundException();
-        return new ResponseEntity<>(trainee.toString(), HttpStatus.OK);
+        return new ResponseEntity<>(trainee.toString(),HttpStatus.OK);
     }
 
     @GetMapping("/aadhar/{aadhar}")
-    public ResponseEntity<String> viewTraineeByAadhar(@PathVariable long aadhar) {
+    public ResponseEntity<String> viewTraineeByAadhar(@PathVariable long aadhar){
         Trainee trainee = service.viewTraineeByAadhar(aadhar);
-        if (trainee == null)
+        if (trainee==null)
             throw new UserNotFoundException();
         return new ResponseEntity<>(trainee.toString(), HttpStatus.OK);
     }
-
     @GetMapping("/location/{location}")
-    public ResponseEntity<String> viewAllTraineeByLocation(@PathVariable String location) {
+    public ResponseEntity<String> viewAllTraineeByLocation(@PathVariable String location){
         List<Trainee> trainee = service.viewAllTraineesByLocation(location);
-        if (trainee == null)
+        if (trainee==null)
             throw new UserNotFoundException();
         return new ResponseEntity<>(trainee.toString(), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<String> deleteTrainee(@RequestBody int traineeId) {
+    public ResponseEntity<String> deleteTrainee(@RequestBody int traineeId){
         Trainee trainee = service.viewTraineeByAadhar(traineeId);
-        if (trainee == null)
+        if (trainee==null)
             throw new UserNotFoundException();
         service.deleteTrainee(traineeId);
         return new ResponseEntity<>("Trainee Deleted!", HttpStatus.OK);

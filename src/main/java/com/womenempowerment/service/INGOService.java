@@ -1,23 +1,24 @@
 package com.womenempowerment.service;
 
-import com.womenempowerment.dto.INgoDto;
-import com.womenempowerment.entity.NGO;
-
 import java.util.List;
 
-public interface INGOService {
+import com.womenempowerment.dto.INgoDto;
 
-    NGO addNGO(INgoDto ngo);
+import com.womenempowerment.entity.NGO;
 
-    NGO updateNGO(INgoDto ngo);
+public interface INGOService  {
+	
+	NGO addNGO(INgoDto ngo);
 
-    NGO viewNGO(int ngoId);
+	NGO updateNGO(INgoDto ngo);
 
-    List<NGO> viewAllNGO();
+	NGO viewNGO(int ngoId);
 
-    void deleteNGO(int ngoId);
+	List<NGO> viewAllNGO();
 
-    List<NGO> viewNGOByMotive(String motive);
+	void deleteNGO(int ngoId);
 
-    List<NGO> viewNGOByLocation(String location);
+	List<NGO> viewNGOByMotive(String motive);
+
+	List<NGO> viewNGOByLocation(String location);
 }

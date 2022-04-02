@@ -17,4 +17,5 @@ public interface ITraineeDao extends JpaRepository<Trainee, Integer> {
     List<Trainee> findByLocation(String location);
 
 
+
 }

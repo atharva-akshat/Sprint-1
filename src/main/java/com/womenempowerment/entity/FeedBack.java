@@ -1,132 +1,137 @@
 package com.womenempowerment.entity;
 
-import javax.persistence.*;
 import java.time.LocalDate;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
-@Table(name = "feedback")
+@Table(name="feedback")
 public class FeedBack {
 
-    @Id
-    private int feedBackId;
-    @Column(name = "schemeRating", length = 2)
-    private int schemeRating;
-    @Column(name = "schemeTrainingRating", length = 2)
-    private int schemeTrainingRating;
-    @Column(name = "overallRating", length = 2)
-    private int overallRating;
-    @Column(name = "comments", length = 20)
-    private String comments;
-    @Column(name = "feedbackdate")
-    private LocalDate feedbackdate;
+	@Id
+	private int feedBackId;
+	@Column(name="schemeRating",length=2)
+	private int schemeRating;
+	@Column(name="schemeTrainingRating",length=2)
+	private int schemeTrainingRating;
+	@Column(name="overallRating",length=2)
+	private int overallRating;
+	@Column(name="comments",length=20)
+	private String comments;
+	@Column(name="feedbackdate")
+	private	LocalDate feedbackdate;
+	
 
+	@ManyToOne
+	@JoinColumn(name="traineeId")
+	private Trainee trainee;
+	
+	@ManyToOne
+	@JoinColumn(name="trainingCourseId")
+	private TrainingCourse trainingCourse;
+	
+	@ManyToOne()
+	@JoinColumn(name="schemeId")
+	private Scheme scheme;
 
-    @ManyToOne
-    @JoinColumn(name = "traineeId")
-    private Trainee trainee;
+	public int getFeedBackId() {
+		return feedBackId;
+	}
 
-    @ManyToOne
-    @JoinColumn(name = "trainingCourseId")
-    private TrainingCourse trainingCourse;
+	public void setFeedBackId(int feedBackId) {
+		this.feedBackId = feedBackId;
+	}
 
-    @ManyToOne()
-    @JoinColumn(name = "schemeId")
-    private Scheme scheme;
+	public int getSchemeRating() {
+		return schemeRating;
+	}
 
-    public int getFeedBackId() {
-        return feedBackId;
-    }
+	public void setSchemeRating(int schemeRating) {
+		this.schemeRating = schemeRating;
+	}
 
-    public void setFeedBackId(int feedBackId) {
-        this.feedBackId = feedBackId;
-    }
+	public int getSchemeTrainingRating() {
+		return schemeTrainingRating;
+	}
 
-    public int getSchemeRating() {
-        return schemeRating;
-    }
+	public void setSchemeTrainingRating(int schemeTrainingRating) {
+		this.schemeTrainingRating = schemeTrainingRating;
+	}
 
-    public void setSchemeRating(int schemeRating) {
-        this.schemeRating = schemeRating;
-    }
+	public int getOverallRating() {
+		return overallRating;
+	}
 
-    public int getSchemeTrainingRating() {
-        return schemeTrainingRating;
-    }
+	public void setOverallRating(int overallRating) {
+		this.overallRating = overallRating;
+	}
 
-    public void setSchemeTrainingRating(int schemeTrainingRating) {
-        this.schemeTrainingRating = schemeTrainingRating;
-    }
+	public String getComments() {
+		return comments;
+	}
 
-    public int getOverallRating() {
-        return overallRating;
-    }
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
 
-    public void setOverallRating(int overallRating) {
-        this.overallRating = overallRating;
-    }
+	public LocalDate getFeedbackdate() {
+		return feedbackdate;
+	}
 
-    public String getComments() {
-        return comments;
-    }
+	public void setFeedbackdate(LocalDate feedbackdate) {
+		this.feedbackdate = feedbackdate;
+	}
 
-    public void setComments(String comments) {
-        this.comments = comments;
-    }
+	public Trainee getTrainee() {
 
-    public LocalDate getFeedbackdate() {
-        return feedbackdate;
-    }
+		return trainee;
+	}
 
-    public void setFeedbackdate(LocalDate feedbackdate) {
-        this.feedbackdate = feedbackdate;
-    }
+	public void setTrainee(Trainee trainee) {
+		this.trainee = trainee;
+	}
 
-    public Trainee getTrainee() {
+	public TrainingCourse getTrainingCourse() {
+		return trainingCourse;
+	}
 
-        return trainee;
-    }
+	public void setTrainingCourse(TrainingCourse trainingCourse) {
+		this.trainingCourse = trainingCourse;
+	}
 
-    public void setTrainee(Trainee trainee) {
-        this.trainee = trainee;
-    }
+	public TrainingCourse getTraining() {
+		return trainingCourse;
+	}
 
-    public TrainingCourse getTrainingCourse() {
-        return trainingCourse;
-    }
+	public void setTraining(TrainingCourse training) {
+		this.trainingCourse = training;
+	}
 
-    public void setTrainingCourse(TrainingCourse trainingCourse) {
-        this.trainingCourse = trainingCourse;
-    }
+	public Scheme getScheme() {
+		return scheme;
+	}
 
-    public TrainingCourse getTraining() {
-        return trainingCourse;
-    }
+	public void setScheme(Scheme scheme) {
+		this.scheme = scheme;
+	}
+	
 
-    public void setTraining(TrainingCourse training) {
-        this.trainingCourse = training;
-    }
-
-    public Scheme getScheme() {
-        return scheme;
-    }
-
-    public void setScheme(Scheme scheme) {
-        this.scheme = scheme;
-    }
-
-
-    @Override
-    public String toString() {
-        return "FeedBack{" +
-                "feedBackId=" + feedBackId +
-                ", schemeRating=" + schemeRating +
-                ", schemeTrainingRating=" + schemeTrainingRating +
-                ", overallRating=" + overallRating +
-                ", comments='" + comments + '\'' +
-                ", feedbackdate=" + feedbackdate +
-                ", trainee=" + trainee.getTraineeId() +
-                ", trainingCourse=" + trainingCourse.getTrainingCourseId() +
-                ", scheme=" + scheme.getSchemeId() +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "FeedBack{" +
+				"feedBackId=" + feedBackId +
+				", schemeRating=" + schemeRating +
+				", schemeTrainingRating=" + schemeTrainingRating +
+				", overallRating=" + overallRating +
+				", comments='" + comments + '\'' +
+				", feedbackdate=" + feedbackdate +
+				", trainee=" + trainee.getTraineeId() +
+				", trainingCourse=" + trainingCourse.getTrainingCourseId() +
+				", scheme=" + scheme.getSchemeId() +
+				'}';
+	}
 }

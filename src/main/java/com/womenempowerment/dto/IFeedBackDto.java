@@ -12,7 +12,6 @@ public class IFeedBackDto {
     private int trainingCourseId;
     private int schemeId;
     private int userId;
-
     public int getUserId() {
         return userId;
     }
