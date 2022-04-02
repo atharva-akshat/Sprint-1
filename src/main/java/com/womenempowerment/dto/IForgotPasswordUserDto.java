@@ -1,12 +1,20 @@
 package com.womenempowerment.dto;
 
 public class IForgotPasswordUserDto {
-	private String password;
+	private String oldPassword;
+	private String newPassword;
 	
-	public String getPassword() {
-		return password;
+	public String getOldPassword() {
+		return oldPassword;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setOldPassword(String oldPassword) {
+		this.oldPassword = oldPassword;
 	}
+	public String getNewPassword() {
+		return newPassword;
+	}
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
+	
 }

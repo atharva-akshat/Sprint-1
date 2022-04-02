@@ -1,14 +1,18 @@
 package com.womenempowerment.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.womenempowerment.dao.ISchemeDao;
+import com.womenempowerment.dao.ITraineeDao;
 import com.womenempowerment.dao.ITrainingCourseDao;
+import com.womenempowerment.dto.IAddTraineeTrainingCourseDto;
 import com.womenempowerment.dto.ITrainingCourseDto;
 import com.womenempowerment.entity.Scheme;
+import com.womenempowerment.entity.Trainee;
 import com.womenempowerment.entity.TrainingCourse;
 
 @Service
@@ -19,6 +23,9 @@ public class ITrainingCourseServiceImpl implements ITrainingCourseService{
     
     @Autowired
     ISchemeDao schemeDao;
+    
+    @Autowired
+    ITraineeDao traineeDao;
 
     //adding courses
     @Override
@@ -68,4 +75,24 @@ public class ITrainingCourseServiceImpl implements ITrainingCourseService{
     public List<TrainingCourse> viewByTrainingCourseName(String courseName) {
     	return courseDao.viewbyCourseName(courseName);
     }
+
+	@Override
+	public TrainingCourse addTrainee(IAddTraineeTrainingCourseDto trainee) {
+		int id= trainee.getTrainingCourseId();
+		List<Integer> listTrainee= trainee.getUserId();
+		TrainingCourse c= courseDao.findById(id).orElse(null);
+		List<Trainee> newListTrainee= new ArrayList<Trainee>();
+
+		if(c==null)
+			return c;
+		for(int i: listTrainee) {
+			Trainee t= traineeDao.findById(i).orElse(null);
+			if(t==null)
+				return null;
+			newListTrainee.add(t);
+		}
+		c.setTrainee(newListTrainee);
+		return courseDao.save(c);
+	}
+
 }

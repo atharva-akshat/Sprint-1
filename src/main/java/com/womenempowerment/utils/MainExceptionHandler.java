@@ -38,4 +38,9 @@ public class MainExceptionHandler {
         System.out.println(ex.getMessage());
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
+    @ExceptionHandler(value=InvalidAdditionException.class)
+    public ResponseEntity<Object> exception (InvalidAdditionException ex){
+    	System.out.println(ex.getMessage());
+    	return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
 }

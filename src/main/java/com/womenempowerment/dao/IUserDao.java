@@ -11,7 +11,7 @@ public interface IUserDao extends JpaRepository<User, Integer> {
 			nativeQuery = true)
 	public User login(String username, String password);
 	
-	@Query(value= "select * from users where users.user_name like ?1",
+	@Query(value= "select * from users where users.user_name like ?1 and users.user_password like ?2",
 			nativeQuery = true)
-	public User findByUsername(String username);
+	public User authenticateUser(String username, String oldPassword);
 }

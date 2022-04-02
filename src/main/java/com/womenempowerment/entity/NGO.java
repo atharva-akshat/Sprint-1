@@ -1,6 +1,7 @@
 package com.womenempowerment.entity;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -115,7 +116,15 @@ public class NGO {
 				", donation=" + donation +
 				", ngoSize=" + ngoSize +
 				", ngoActivities='" + ngoActivities + '\'' +
-				", trainingCourse=" + trainingCourse +
+				", trainingCourse=" + this.extractNgoId() +
 				'}';
+	}
+	
+	public List<Integer> extractNgoId(){
+		List<Integer> ngoId= new ArrayList<Integer>();
+		for(int i=0;i<trainingCourse.size();i++) {
+			ngoId.add(trainingCourse.get(i).getTrainingCourseId());
+		}
+		return ngoId;
 	}
 }

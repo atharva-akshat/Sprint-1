@@ -1,6 +1,7 @@
 package com.womenempowerment.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -98,9 +99,19 @@ public class TrainingCourse {
 	}
 	@Override
 	public String toString() {
+		List<Integer> s= this.extractTraineeId();
+		System.out.println(s);
 		return "TrainingCourse [trainingCourseId=" + trainingCourseId + ", courseName=" + courseName
 				+ ", courseDuration=" + courseDuration + ", startingDate=" + startingDate + ", endingDate=" + endingDate
-				+ ", courseCompletionStatus=" + courseCompletionStatus + ", scheme=" + scheme.getSchemeId() + "]";
+				+ ", courseCompletionStatus=" + courseCompletionStatus + ", scheme=" + scheme.getSchemeId() + ", trainee=" + s +"]";
+	}
+	
+	public List<Integer> extractTraineeId() {
+		List<Integer> listId= new ArrayList<Integer>();
+		for(int i=0;i<trainee.size();i++) {
+			listId.add(trainee.get(i).getTraineeId());
+		}
+		return listId;
 	}
 	
 	

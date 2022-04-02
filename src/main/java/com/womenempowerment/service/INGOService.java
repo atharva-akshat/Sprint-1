@@ -2,6 +2,7 @@ package com.womenempowerment.service;
 
 import java.util.List;
 
+import com.womenempowerment.dto.IAddCourseNgoDto;
 import com.womenempowerment.dto.INgoDto;
 
 import com.womenempowerment.entity.NGO;
@@ -21,4 +22,6 @@ public interface INGOService  {
 	List<NGO> viewNGOByMotive(String motive);
 
 	List<NGO> viewNGOByLocation(String location);
+	
+	NGO addCourse(IAddCourseNgoDto dto);
 }

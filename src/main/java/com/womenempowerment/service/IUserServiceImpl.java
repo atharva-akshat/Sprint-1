@@ -23,10 +23,10 @@ public class IUserServiceImpl implements IUserService{
 
     @Override
     public User forgotPassword(String username, IForgotPasswordUserDto password) {
-        User user= dao.findByUsername(username);
+        User user= dao.authenticateUser(username, password.getOldPassword());
         if(user==null)
         	return user;
-        user.setUserPassword(password.getPassword());
+        user.setUserPassword(password.getNewPassword());
         return dao.save(user);
     }
 }

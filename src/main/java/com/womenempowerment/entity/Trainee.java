@@ -156,8 +156,6 @@ public class Trainee {
 				", aadharNo=" + aadharNo +
 				", dob=" + dob +
 				", location='" + location + '\'' +
-				", trainingCourse=" + trainingCourse +
-				", feedBack=" + feedBack +
 				'}';
 	}
 }

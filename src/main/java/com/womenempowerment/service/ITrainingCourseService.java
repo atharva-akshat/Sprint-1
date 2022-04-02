@@ -2,6 +2,7 @@ package com.womenempowerment.service;
 
 import java.util.List;
 
+import com.womenempowerment.dto.IAddTraineeTrainingCourseDto;
 import com.womenempowerment.dto.ITrainingCourseDto;
 import com.womenempowerment.entity.TrainingCourse;
 
@@ -18,4 +19,5 @@ public interface ITrainingCourseService  {
 
 	List<TrainingCourse> viewByTrainingCourseName(String courseName);
 
+	TrainingCourse addTrainee(IAddTraineeTrainingCourseDto trainee);
 }

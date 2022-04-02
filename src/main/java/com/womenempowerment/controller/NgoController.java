@@ -1,10 +1,13 @@
 package com.womenempowerment.controller;
 
+import com.womenempowerment.exception.InvalidAdditionException;
 import com.womenempowerment.exception.NGOAlreadyExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import com.womenempowerment.dto.IAddCourseNgoDto;
 import com.womenempowerment.dto.INgoDto;
 import com.womenempowerment.entity.NGO;
 import com.womenempowerment.exception.NGONotFoundException;
@@ -72,5 +75,13 @@ public class NgoController {
 			throw new NGONotFoundException();
 		ngoservice.deleteNGO(ngoId);
 		return new ResponseEntity<>("Ngo deleted", HttpStatus.OK);
+	}
+	
+	@PostMapping("/addTrainingCourses")
+	public ResponseEntity<String> addCourse(@RequestBody IAddCourseNgoDto dto){
+		NGO ngo= ngoservice.addCourse(dto);
+		if(ngo==null)
+			throw new InvalidAdditionException();
+		return new ResponseEntity<String>("Courses Added", HttpStatus.OK);
 	}
 }
