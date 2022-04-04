@@ -60,7 +60,8 @@ public class TraineeController {
 
     @DeleteMapping("/delete")
     public ResponseEntity<String> deleteTrainee(@RequestBody int traineeId){
-        if (service.viewTraineeByAadhar(traineeId)==null)
+    	Trainee trainee= service.viewTrainee(traineeId);
+        if (trainee==null)
             throw new UserNotFoundException();
         service.deleteTrainee(traineeId);
         return new ResponseEntity<>("Trainee Deleted!", HttpStatus.OK);
