@@ -1,25 +1,17 @@
 package com.womenempowerment.controller;
 
-import com.womenempowerment.dao.ISchemeDao;
 import com.womenempowerment.dto.ISchemeDto;
 import com.womenempowerment.entity.Scheme;
 import com.womenempowerment.exception.SchemeNotFoundException;
 import com.womenempowerment.service.ISchemeServiceImpl;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @RestController
 @RequestMapping("/scheme")
@@ -57,8 +49,8 @@ public class SchemeController {
 		return new ResponseEntity<String>(scheme.toString(), HttpStatus.OK);
 	}
 	
-	@GetMapping("/delete{id}")
-	public ResponseEntity<String> deleteScheme(@PathVariable int id){
+	@DeleteMapping("/delete")
+	public ResponseEntity<String> deleteScheme(@RequestBody int id){
 		Scheme scheme=service.viewScheme(id);
 		if(scheme==null)
 			throw new SchemeNotFoundException();
