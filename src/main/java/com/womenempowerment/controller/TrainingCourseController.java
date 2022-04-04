@@ -30,9 +30,9 @@ public class TrainingCourseController {
 	
 	@PutMapping("/update")
 	public ResponseEntity<String> updateCourse(@RequestBody ITrainingCourseDto course){
-		TrainingCourse c= service.updateTrainingCourse(course);
-		if(c==null)
+		if(service.updateTrainingCourse(course)==null)
 			throw new TrainingCourseNotFoundException();
+		service.updateTrainingCourse(course);
 		return new ResponseEntity<>("Course updated!", HttpStatus.OK);
 	}
 	

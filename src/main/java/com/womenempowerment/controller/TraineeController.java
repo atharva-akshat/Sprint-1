@@ -1,10 +1,7 @@
 package com.womenempowerment.controller;
 
 import com.womenempowerment.dto.ITraineeDto;
-import com.womenempowerment.entity.FeedBack;
 import com.womenempowerment.entity.Trainee;
-import com.womenempowerment.exception.FeedBackAlreadyExistsException;
-import com.womenempowerment.exception.FeedBackNotFoundException;
 import com.womenempowerment.exception.InvalidUserException;
 import com.womenempowerment.exception.UserNotFoundException;
 import com.womenempowerment.service.ITraineeServiceImpl;
@@ -24,8 +21,7 @@ public class TraineeController {
 
     @PostMapping("/add")
     public ResponseEntity<String> addTrainee(@RequestBody ITraineeDto traineeDto){
-        Trainee trainee = service.viewTrainee(traineeDto.getTraineeId());
-        if (trainee != null)
+        if (service.viewTrainee(traineeDto.getTraineeId()) != null)
             throw new InvalidUserException();
         service.addTrainee(traineeDto);
         return new ResponseEntity<String>("Trainee Added!", HttpStatus.OK);
@@ -64,8 +60,7 @@ public class TraineeController {
 
     @DeleteMapping("/delete")
     public ResponseEntity<String> deleteTrainee(@RequestBody int traineeId){
-        Trainee trainee = service.viewTraineeByAadhar(traineeId);
-        if (trainee==null)
+        if (service.viewTraineeByAadhar(traineeId)==null)
             throw new UserNotFoundException();
         service.deleteTrainee(traineeId);
         return new ResponseEntity<>("Trainee Deleted!", HttpStatus.OK);
