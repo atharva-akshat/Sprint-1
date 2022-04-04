@@ -10,7 +10,6 @@ public class IFeedBackDto {
     private String comments;
     private LocalDate feedbackDate;
     private int trainingCourseId;
-    private int schemeId;
     private int userId;
     public int getUserId() {
         return userId;
@@ -74,14 +73,6 @@ public class IFeedBackDto {
 
     public void setTrainingCourseId(int trainingCourseId) {
         this.trainingCourseId = trainingCourseId;
-    }
-
-    public int getSchemeId() {
-        return schemeId;
-    }
-
-    public void setSchemeId(int schemeId) {
-        this.schemeId = schemeId;
     }
 
 }

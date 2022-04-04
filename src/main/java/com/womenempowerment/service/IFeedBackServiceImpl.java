@@ -26,7 +26,8 @@ public class IFeedBackServiceImpl implements IFeedBackService{
 	@Override
 	public FeedBack addFeedBack(IFeedBackDto dto) {
 		TrainingCourse trainingCourse = courseDao.findById(dto.getTrainingCourseId()).orElse(null);
-		Scheme scheme= schemeDao.findById(dto.getSchemeId()).orElse(null);
+		Scheme scheme= schemeDao.findSchemeId(trainingCourse.getTrainingCourseId());
+		System.out.println(scheme);
 		Trainee trainee = traineeDao.findById(dto.getUserId()).orElse(null);
 		FeedBack feedBack = new FeedBack();
 		feedBack.setFeedBackId(dto.getFeedBackId());

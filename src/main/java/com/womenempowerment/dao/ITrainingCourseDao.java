@@ -1,6 +1,7 @@
 package com.womenempowerment.dao;
 
 
+import com.womenempowerment.entity.Scheme;
 import com.womenempowerment.entity.TrainingCourse;
 
 import java.util.List;
@@ -14,4 +15,5 @@ public interface ITrainingCourseDao extends JpaRepository<TrainingCourse, Intege
 	@Query(value = "SELECT * FROM trainingcourse tc WHERE tc.course_name like %?1%", 
 			  nativeQuery = true)
 	public List<TrainingCourse> viewbyCourseName(String name);
+	
 }
