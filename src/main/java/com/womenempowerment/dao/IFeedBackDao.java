@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IFeedBackDao extends JpaRepository<FeedBack, Integer>{
 
-    @Query("select f from FeedBack f where f.scheme.schemeName like ?1")
+    @Query("select f from FeedBack f where f.scheme.schemeName like %?1%")
     List<FeedBack> viewBySchemeName(String name);
 
-    @Query("select f from FeedBack f where f.trainingCourse.courseName like ?1")
+    @Query("select f from FeedBack f where f.trainingCourse.courseName like %?1%")
     List<FeedBack> viewByTrainingCourseName(String courseName);
 }

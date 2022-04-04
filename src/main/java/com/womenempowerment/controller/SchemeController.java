@@ -19,6 +19,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @RestController
 @RequestMapping("/scheme")
@@ -34,10 +35,9 @@ public class SchemeController {
 	
 	@PostMapping("/update")
 	public ResponseEntity<String> updateScheme(@RequestBody ISchemeDto scheme){
-		service.updateScheme(scheme);
-		if(scheme==null)
+		Scheme s= service.updateScheme(scheme);
+		if(s==null)
 			throw new SchemeNotFoundException();
-		service.updateScheme(scheme);
 		return new ResponseEntity<>("Scheme Updated!",HttpStatus.OK);
 	}
 	
@@ -75,7 +75,7 @@ public class SchemeController {
 	}
 	
 	@GetMapping("/viewByLaunchDate{launchdate}")
-	public ResponseEntity<String> getSchemeByLaunchDate(@PathVariable LocalDate launchdate){
+	public ResponseEntity<String> getSchemeByLaunchDate(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate launchdate){
 		List<Scheme> scheme=service.viewSchemeByLaunchDate(launchdate);
 		if(scheme.isEmpty())
 			throw new SchemeNotFoundException();

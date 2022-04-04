@@ -33,6 +33,7 @@ public class ISchemeServiceImpl implements ISchemeService{
 	@Override
 	public Scheme updateScheme(ISchemeDto scheme) {
 		Scheme existingscheme= dao.findById(scheme.getSchemeId()).orElse(null);
+		System.out.println(existingscheme);
 		if(existingscheme==null)
 			return null;
 		existingscheme.setSchemeName(scheme.getSchemeName());

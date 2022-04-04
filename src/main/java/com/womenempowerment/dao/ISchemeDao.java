@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 public interface ISchemeDao extends JpaRepository<Scheme, Integer>{
-	@Query("select s from Scheme s where s.schemeType = ?1")
+	@Query("select s from Scheme s where s.schemeType like %?1%")
 	List<Scheme> findByType(String schemeType);
 	
 	@Query("select s from Scheme s where s.schemeLaunchDate = ?1")
