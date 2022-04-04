@@ -2,6 +2,7 @@ package com.womenempowerment.controller;
 
 import com.womenempowerment.dto.ISchemeDto;
 import com.womenempowerment.entity.Scheme;
+import com.womenempowerment.exception.SchemeAlreadyExistsException;
 import com.womenempowerment.exception.SchemeNotFoundException;
 import com.womenempowerment.service.ISchemeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +22,17 @@ public class SchemeController {
 	
 	@PostMapping("/add")
 	public ResponseEntity<String> addScheme(@RequestBody ISchemeDto scheme){
+		if (service.viewScheme(scheme.getSchemeId())!=null)
+			throw new SchemeAlreadyExistsException();
 		service.addScheme(scheme);
-		return new ResponseEntity<String>("Scheme Added!", HttpStatus.OK);
+		return new ResponseEntity<>("Scheme Added!", HttpStatus.OK);
 	}
 	
 	@PutMapping("/update")
 	public ResponseEntity<String> updateScheme(@RequestBody ISchemeDto scheme){
-		Scheme s= service.updateScheme(scheme);
-		if(s==null)
+		if(service.viewScheme(scheme.getSchemeId())==null)
 			throw new SchemeNotFoundException();
+		service.updateScheme(scheme);
 		return new ResponseEntity<>("Scheme Updated!",HttpStatus.OK);
 	}
 	
@@ -46,7 +49,7 @@ public class SchemeController {
 		Scheme scheme= service.viewScheme(id);
 		if(scheme==null)
 			throw new SchemeNotFoundException();
-		return new ResponseEntity<String>(scheme.toString(), HttpStatus.OK);
+		return new ResponseEntity<>(scheme.toString(), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/delete")
@@ -55,7 +58,7 @@ public class SchemeController {
 		if(scheme==null)
 			throw new SchemeNotFoundException();
 		service.deleteScheme(id);
-		return new ResponseEntity<String>("Scheme deleted!",HttpStatus.OK);
+		return new ResponseEntity<>("Scheme deleted!",HttpStatus.OK);
 	}
 	
 	@GetMapping("/viewByType{type}")
@@ -63,7 +66,7 @@ public class SchemeController {
 		List<Scheme> scheme=service.viewSchemesByType(type);
 		if(scheme.isEmpty())
 			throw new SchemeNotFoundException();
-		return new ResponseEntity<String>(scheme.toString(),HttpStatus.OK);
+		return new ResponseEntity<>(scheme.toString(),HttpStatus.OK);
 	}
 	
 	@GetMapping("/viewByLaunchDate{launchdate}")
@@ -71,6 +74,6 @@ public class SchemeController {
 		List<Scheme> scheme=service.viewSchemeByLaunchDate(launchdate);
 		if(scheme.isEmpty())
 			throw new SchemeNotFoundException();
-		return new ResponseEntity<String>(scheme.toString(),HttpStatus.OK);
+		return new ResponseEntity<>(scheme.toString(),HttpStatus.OK);
 	}
 }

@@ -21,7 +21,7 @@ public class MainExceptionHandler {
     @ExceptionHandler(value = TrainingCourseNotFoundException.class)
     public ResponseEntity<Object> exception(TrainingCourseNotFoundException ex){
         System.out.println(ex.getMessage());
-        return new ResponseEntity<Object>(ex.getMessage(), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
     @ExceptionHandler(value = FeedBackNotFoundException.class)
     public ResponseEntity<Object> exception(FeedBackNotFoundException ex){
@@ -45,6 +45,11 @@ public class MainExceptionHandler {
     }
     @ExceptionHandler(value=TrainingCourseAlreadyExistsException.class)
     public ResponseEntity<Object> exception (TrainingCourseAlreadyExistsException ex){
+        System.out.println(ex.getMessage());
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler(value=SchemeAlreadyExistsException.class)
+    public ResponseEntity<Object> exception (SchemeAlreadyExistsException ex){
         System.out.println(ex.getMessage());
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
