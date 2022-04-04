@@ -25,7 +25,7 @@ public class SchemeController {
 		return new ResponseEntity<String>("Scheme Added!", HttpStatus.OK);
 	}
 	
-	@PostMapping("/update")
+	@PutMapping("/update")
 	public ResponseEntity<String> updateScheme(@RequestBody ISchemeDto scheme){
 		Scheme s= service.updateScheme(scheme);
 		if(s==null)
