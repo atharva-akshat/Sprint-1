@@ -3,6 +3,7 @@ package com.womenempowerment.controller;
 import com.womenempowerment.dto.ITraineeDto;
 import com.womenempowerment.entity.Trainee;
 import com.womenempowerment.exception.InvalidUserException;
+import com.womenempowerment.exception.TraineeAlreadyExistsException;
 import com.womenempowerment.exception.UserNotFoundException;
 import com.womenempowerment.service.ITraineeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class TraineeController {
     @PostMapping("/add")
     public ResponseEntity<String> addTrainee(@RequestBody ITraineeDto traineeDto){
         if (service.viewTrainee(traineeDto.getTraineeId()) != null)
-            throw new InvalidUserException();
+            throw new TraineeAlreadyExistsException();
         Trainee trainee= service.addTrainee(traineeDto);
         if(trainee==null)
         	throw new InvalidUserException();
