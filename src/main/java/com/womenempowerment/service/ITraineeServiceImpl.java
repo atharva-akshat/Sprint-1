@@ -3,8 +3,11 @@ package com.womenempowerment.service;
 import com.womenempowerment.dao.IFeedBackDao;
 import com.womenempowerment.dao.ITraineeDao;
 import com.womenempowerment.dao.ITrainingCourseDao;
+import com.womenempowerment.dao.IUserDao;
 import com.womenempowerment.dto.ITraineeDto;
 import com.womenempowerment.entity.Trainee;
+import com.womenempowerment.entity.User;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,17 +25,23 @@ public class ITraineeServiceImpl implements ITraineeService{
     @Autowired
     IFeedBackDao feedbackDao;
     
+    @Autowired
+    IUserDao userDao;
+    
     @Override
     public Trainee addTrainee(ITraineeDto traineeDto) {
+    	User user= userDao.findById(traineeDto.getTraineeId()).orElse(null);
+    	if(user==null)
+    		return null;
     	Trainee trainee= new Trainee();
-        trainee.setTraineeId(traineeDto.getTraineeId());
+        trainee.setTraineeId(user.getLoginId());
+        trainee.setUserName(user.getUserName());
+        trainee.setPassword(user.getUserPassword());
     	trainee.setAadharNo(traineeDto.getAadharNo());
     	trainee.setContact(traineeDto.getContact());
     	trainee.setDob(traineeDto.getDob());
     	trainee.setEmail(traineeDto.getEmail());
     	trainee.setFamilyInfo(traineeDto.getFamilyInfo());
-    	trainee.setUserName(traineeDto.getUserName());
-    	trainee.setPassword(traineeDto.getPassword());
     	trainee.setFirstName(traineeDto.getFirstName());
     	trainee.setLastName(traineeDto.getLastName());
         trainee.setLocation(traineeDto.getLocation());
@@ -47,8 +56,6 @@ public class ITraineeServiceImpl implements ITraineeService{
         existingTrainee.setDob(traineeDto.getDob());
         existingTrainee.setEmail(traineeDto.getEmail());
         existingTrainee.setFamilyInfo(traineeDto.getFamilyInfo());
-        existingTrainee.setUserName(traineeDto.getUserName());
-        existingTrainee.setPassword(traineeDto.getPassword());
         existingTrainee.setFirstName(traineeDto.getFirstName());
         existingTrainee.setLastName(traineeDto.getLastName());
         existingTrainee.setLocation(traineeDto.getLocation());

@@ -5,8 +5,6 @@ import java.time.LocalDate;
 
 public class ITraineeDto implements Serializable {
     private  Integer traineeId;
-    private  String userName;
-    private  String password;
     private  String firstName;
     private  String lastName;
     private  long contact;
@@ -30,22 +28,6 @@ public class ITraineeDto implements Serializable {
 
     public void setTraineeId(Integer traineeId) {
         this.traineeId = traineeId;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getFirstName() {

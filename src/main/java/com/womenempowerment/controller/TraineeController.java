@@ -23,7 +23,9 @@ public class TraineeController {
     public ResponseEntity<String> addTrainee(@RequestBody ITraineeDto traineeDto){
         if (service.viewTrainee(traineeDto.getTraineeId()) != null)
             throw new InvalidUserException();
-        service.addTrainee(traineeDto);
+        Trainee trainee= service.addTrainee(traineeDto);
+        if(trainee==null)
+        	throw new InvalidUserException();
         return new ResponseEntity<String>("Trainee Added!", HttpStatus.OK);
     }
 
