@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class ISchemeDto implements Serializable {
-    private  Integer schemeId;
-    private  String schemeName;
-    private  String schemeType;
-    private  LocalDate schemeLaunchDate;
-    private  String schemeEligibility;
-    private  String schemeObjective;
+    private Integer schemeId;
+    private String schemeName;
+    private String schemeType;
+    private LocalDate schemeLaunchDate;
+    private String schemeEligibility;
+    private String schemeObjective;
 
     public Integer getSchemeId() {
         return schemeId;

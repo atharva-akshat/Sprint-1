@@ -7,11 +7,11 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IUserDao extends JpaRepository<User, Integer> {
-	@Query(value= "SELECT * FROM USERS WHERE USER_NAME LIKE ?1 AND USER_PASSWORD LIKE ?2",
-			nativeQuery = true)
-	public User login(String username, String password);
-	
-	@Query(value= "select * from users where users.user_name like ?1 and users.user_password like ?2",
-			nativeQuery = true)
-	public User authenticateUser(String username, String oldPassword);
+    @Query(value = "SELECT * FROM USERS WHERE USER_NAME LIKE ?1 AND USER_PASSWORD LIKE ?2",
+            nativeQuery = true)
+    User login(String username, String password);
+
+    @Query(value = "select * from users where users.user_name like ?1 and users.user_password like ?2",
+            nativeQuery = true)
+    User authenticateUser(String username, String oldPassword);
 }

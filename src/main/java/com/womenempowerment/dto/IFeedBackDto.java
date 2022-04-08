@@ -11,6 +11,7 @@ public class IFeedBackDto {
     private LocalDate feedbackDate;
     private int trainingCourseId;
     private int TraineeId;
+
     public int getTraineeId() {
         return TraineeId;
     }

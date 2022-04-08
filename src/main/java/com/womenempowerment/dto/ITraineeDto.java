@@ -4,15 +4,15 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class ITraineeDto implements Serializable {
-    private  Integer traineeId;
-    private  String firstName;
-    private  String lastName;
-    private  long contact;
-    private  String email;
-    private  String familyInfo;
-    private  long aadharNo;
-    private  LocalDate dob;
-    private  String location;
+    private Integer traineeId;
+    private String firstName;
+    private String lastName;
+    private long contact;
+    private String email;
+    private String familyInfo;
+    private long aadharNo;
+    private LocalDate dob;
+    private String location;
 
     public String getLocation() {
         return location;
