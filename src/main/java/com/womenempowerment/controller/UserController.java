@@ -8,6 +8,7 @@ import com.womenempowerment.exception.InvalidUserException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -23,7 +24,7 @@ public class UserController {
     IUserService service;
     
 	@PostMapping("/register")
-	public ResponseEntity<String> addUser(@RequestBody User user) {
+	public ResponseEntity<String> addUser(@Validated @RequestBody User user) {
 		service.registerUser(user);
 		return new ResponseEntity<String>("User added", HttpStatus.OK);
 	}

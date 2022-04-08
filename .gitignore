@@ -119,3 +119,4 @@ target/classes/com/womenempowerment/service/IUserService.class
 target/classes/com/womenempowerment/swagger/SwaggerConfiguration.class
 target/classes/META-INF/persistence.xml
 /target/
+/bin/
