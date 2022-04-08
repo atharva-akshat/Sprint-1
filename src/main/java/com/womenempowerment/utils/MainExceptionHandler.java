@@ -58,5 +58,11 @@ public class MainExceptionHandler {
         System.out.println(ex.getMessage());
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(value=UserNotFoundException.class)
+    public ResponseEntity<Object> exception (UserNotFoundException ex){
+        System.out.println(ex.getMessage());
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
     
 }
