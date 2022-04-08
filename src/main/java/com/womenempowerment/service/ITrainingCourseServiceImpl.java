@@ -78,7 +78,7 @@ public class ITrainingCourseServiceImpl implements ITrainingCourseService{
 	@Override
 	public TrainingCourse addTrainee(IAddTraineeTrainingCourseDto trainee) {
 		int id= trainee.getTrainingCourseId();
-		List<Integer> listTrainee= trainee.getUserId();
+		List<Integer> listTrainee= trainee.getTraineeId();
 		TrainingCourse c= courseDao.findById(id).orElse(null);
 		List<Trainee> newListTrainee= new ArrayList<Trainee>();
 
