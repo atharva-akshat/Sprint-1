@@ -5,7 +5,7 @@ import com.womenempowerment.entity.Trainee;
 import com.womenempowerment.exception.TraineeAlreadyExistsException;
 import com.womenempowerment.exception.TraineeNotFoundException;
 import com.womenempowerment.exception.UserNotFoundException;
-import com.womenempowerment.service.ITraineeServiceImpl;
+import com.womenempowerment.service.impl.ITraineeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

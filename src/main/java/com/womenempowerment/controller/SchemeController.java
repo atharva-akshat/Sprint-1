@@ -4,7 +4,7 @@ import com.womenempowerment.dto.ISchemeDto;
 import com.womenempowerment.entity.Scheme;
 import com.womenempowerment.exception.SchemeAlreadyExistsException;
 import com.womenempowerment.exception.SchemeNotFoundException;
-import com.womenempowerment.service.ISchemeServiceImpl;
+import com.womenempowerment.service.impl.ISchemeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
