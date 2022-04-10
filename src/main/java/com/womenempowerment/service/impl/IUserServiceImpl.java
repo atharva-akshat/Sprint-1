@@ -19,7 +19,7 @@ public class IUserServiceImpl implements IUserService {
 
     @Override
     public User login(String username, String password) {
-        return dao.login(username, password);
+        return dao.authenticateUser(username, password);
     }
 
     @Override
