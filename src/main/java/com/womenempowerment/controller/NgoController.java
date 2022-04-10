@@ -83,6 +83,6 @@ public class NgoController {
         NGO ngo = ngoservice.addCourse(dto);
         if (ngo == null)
             throw new InvalidAdditionException();
-        return new ResponseEntity<>("Courses Updated", HttpStatus.OK);
+        return new ResponseEntity<>("Courses Added", HttpStatus.OK);
     }
 }
