@@ -4,6 +4,7 @@ import com.womenempowerment.dto.ITraineeDto;
 import com.womenempowerment.entity.Trainee;
 import com.womenempowerment.exception.TraineeAlreadyExistsException;
 import com.womenempowerment.exception.TraineeNotFoundException;
+import com.womenempowerment.exception.UserNotFoundException;
 import com.womenempowerment.service.impl.ITraineeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,7 +24,9 @@ public class TraineeController {
     public ResponseEntity<String> addTrainee(@RequestBody ITraineeDto traineeDto) {
         if (service.viewTrainee(traineeDto.getTraineeId()) != null)
             throw new TraineeAlreadyExistsException();
-        service.addTrainee(traineeDto);
+        Trainee trainee= service.addTrainee(traineeDto);
+        if(trainee==null)
+        	throw new UserNotFoundException();
         return new ResponseEntity<>("Trainee Added!", HttpStatus.OK);
     }
 

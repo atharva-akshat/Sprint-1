@@ -30,6 +30,8 @@ public class ITrainingCourseServiceImpl implements ITrainingCourseService {
     @Override
     public TrainingCourse addTrainingCourse(ITrainingCourseDto dto) {
         Scheme scheme = schemeDao.findById(dto.getSchemeId()).orElse(null);
+        if(scheme==null)
+        	return null;
         TrainingCourse course = new TrainingCourse();
         course.setTrainingCourseId(dto.getTrainingCourseId());
         course.setCourseName(dto.getCourseName());

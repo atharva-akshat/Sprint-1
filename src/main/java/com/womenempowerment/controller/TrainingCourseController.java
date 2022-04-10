@@ -4,6 +4,7 @@ import com.womenempowerment.dto.IAddTraineeTrainingCourseDto;
 import com.womenempowerment.dto.ITrainingCourseDto;
 import com.womenempowerment.entity.TrainingCourse;
 import com.womenempowerment.exception.InvalidAdditionException;
+import com.womenempowerment.exception.SchemeNotFoundException;
 import com.womenempowerment.exception.TrainingCourseAlreadyExistsException;
 import com.womenempowerment.exception.TrainingCourseNotFoundException;
 import com.womenempowerment.service.ITrainingCourseService;
@@ -24,7 +25,9 @@ public class TrainingCourseController {
     public ResponseEntity<String> addCourse(@RequestBody ITrainingCourseDto course) {
         if (service.viewTrainingCourse(course.getTrainingCourseId()) != null)
             throw new TrainingCourseAlreadyExistsException();
-        service.addTrainingCourse(course);
+        TrainingCourse c= service.addTrainingCourse(course);
+        if(c==null)
+        	throw new SchemeNotFoundException();
         return new ResponseEntity<>("Course added", HttpStatus.OK);
     }
 
