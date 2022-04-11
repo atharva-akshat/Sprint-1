@@ -20,9 +20,6 @@ public class User {
     @Column(length = 15)
     @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{4,15}$", message = "Password must contain atleast one capital letter, one small letter, one digit, one special character and should be atleast 4 characters long")
     private String userPassword;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    private Trainee trainee;
     
     public int getLoginId() {
         return loginId;
