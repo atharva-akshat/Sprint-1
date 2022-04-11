@@ -34,7 +34,7 @@ public class UserController {
         return new ResponseEntity<>("Welcome " + user.getUserName(), HttpStatus.OK);
     }
 
-    @PutMapping("/forgotPassword/{username}")
+    @PutMapping("/forgotPassword/")
     public ResponseEntity<String> forgotPassword(@RequestBody String username, IForgotPasswordUserDto userDto) {
         User user = service.forgotPassword(username, userDto);
         if (user == null)
