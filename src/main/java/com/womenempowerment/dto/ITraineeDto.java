@@ -1,9 +1,8 @@
 package com.womenempowerment.dto;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
-public class ITraineeDto implements Serializable {
+public class ITraineeDto {
     private Integer traineeId;
     private String firstName;
     private String lastName;

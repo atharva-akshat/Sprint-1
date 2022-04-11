@@ -9,7 +9,6 @@ import com.womenempowerment.entity.FeedBack;
 import com.womenempowerment.entity.Scheme;
 import com.womenempowerment.entity.Trainee;
 import com.womenempowerment.entity.TrainingCourse;
-import com.womenempowerment.exception.FeedBackNotFoundException;
 import com.womenempowerment.service.IFeedBackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,8 +35,7 @@ public class IFeedBackServiceImpl implements IFeedBackService {
         TrainingCourse trainingCourse = courseDao.findById(dto.getTrainingCourseId()).orElse(null);
         if(trainingCourse == null)
         	return null;
-        Scheme scheme = new Scheme();
-        scheme = schemeDao.findSchemeId(trainingCourse.getTrainingCourseId());
+        Scheme scheme = schemeDao.findSchemeId(trainingCourse.getTrainingCourseId());
         if(scheme == null)
         	return null;
         System.out.println(scheme);

@@ -1,9 +1,8 @@
 package com.womenempowerment.dto;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
-public class ISchemeDto implements Serializable {
+public class ISchemeDto {
     private Integer schemeId;
     private String schemeName;
     private String schemeType;
