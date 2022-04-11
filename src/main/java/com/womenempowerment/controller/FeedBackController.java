@@ -4,6 +4,7 @@ import com.womenempowerment.dto.IFeedBackDto;
 import com.womenempowerment.entity.FeedBack;
 import com.womenempowerment.exception.FeedBackAlreadyExistsException;
 import com.womenempowerment.exception.FeedBackNotFoundException;
+import com.womenempowerment.exception.InvalidAdditionException;
 import com.womenempowerment.service.IFeedBackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,15 +24,15 @@ public class FeedBackController {
     public ResponseEntity<String> addFeedBack(@RequestBody IFeedBackDto feedBack) {
         if (feedBackService.viewFeedBack(feedBack.getFeedBackId()) != null)
             throw new FeedBackAlreadyExistsException();
-        feedBackService.addFeedBack(feedBack);
+        if(feedBackService.addFeedBack(feedBack) == null)
+        	throw new InvalidAdditionException();
         return new ResponseEntity<>("Feedback Added!", HttpStatus.OK);
     }
 
     @PutMapping("/update")
     public ResponseEntity<String> updateFeedBack(@RequestBody IFeedBackDto feedBack) {
-        if (feedBackService.viewFeedBack(feedBack.getFeedBackId()) == null)
-            throw new FeedBackNotFoundException();
-        feedBackService.updateFeedBack(feedBack);
+        if(feedBackService.updateFeedBack(feedBack)==null)
+        	throw new FeedBackNotFoundException();
         return new ResponseEntity<>("Feedback Updated!", HttpStatus.OK);
     }
 

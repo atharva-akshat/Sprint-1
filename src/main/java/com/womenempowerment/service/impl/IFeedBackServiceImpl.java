@@ -34,11 +34,16 @@ public class IFeedBackServiceImpl implements IFeedBackService {
     @Override
     public FeedBack addFeedBack(IFeedBackDto dto) {
         TrainingCourse trainingCourse = courseDao.findById(dto.getTrainingCourseId()).orElse(null);
+        if(trainingCourse == null)
+        	return null;
         Scheme scheme = new Scheme();
-        if (trainingCourse != null)
-            scheme = schemeDao.findSchemeId(trainingCourse.getTrainingCourseId());
+        scheme = schemeDao.findSchemeId(trainingCourse.getTrainingCourseId());
+        if(scheme == null)
+        	return null;
         System.out.println(scheme);
         Trainee trainee = traineeDao.findById(dto.getTraineeId()).orElse(null);
+        if(trainee == null)
+        	return null;
         FeedBack feedBack = new FeedBack();
         feedBack.setFeedBackId(dto.getFeedBackId());
         feedBack.setSchemeRating(dto.getSchemeRating());
@@ -56,7 +61,7 @@ public class IFeedBackServiceImpl implements IFeedBackService {
     public FeedBack updateFeedBack(IFeedBackDto feedback) {
         FeedBack existingFeedBack = feedbackDao.findById(feedback.getFeedBackId()).orElse(null);
         if (existingFeedBack == null)
-            throw new FeedBackNotFoundException();
+            return null;
         existingFeedBack.setSchemeRating(feedback.getSchemeRating());
         existingFeedBack.setSchemeTrainingRating(feedback.getSchemeTrainingRating());
         existingFeedBack.setOverallRating(feedback.getOverallRating());
