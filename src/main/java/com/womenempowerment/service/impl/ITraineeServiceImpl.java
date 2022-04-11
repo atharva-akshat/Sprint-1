@@ -44,6 +44,7 @@ public class ITraineeServiceImpl implements ITraineeService {
         trainee.setFirstName(traineeDto.getFirstName());
         trainee.setLastName(traineeDto.getLastName());
         trainee.setLocation(traineeDto.getLocation());
+        trainee.setUser(user);
         return dao.save(trainee);
     }
 
