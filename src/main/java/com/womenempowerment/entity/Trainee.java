@@ -37,8 +37,19 @@ public class Trainee {
 
     @OneToMany(mappedBy = "trainee")
     private List<FeedBack> feedBack;
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    private User user;
 
-    public String getLocation() {
+    public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public String getLocation() {
         return location;
     }
 
