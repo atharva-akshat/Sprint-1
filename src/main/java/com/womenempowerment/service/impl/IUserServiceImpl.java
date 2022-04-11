@@ -25,6 +25,8 @@ public class IUserServiceImpl implements IUserService {
     @Override
     public User forgotPassword(String username, IForgotPasswordUserDto password) {
         User user = dao.authenticateUser(username, password.getOldPassword());
+        if (user == null)
+            return null;
         user.setUserPassword(password.getNewPassword());
         return dao.save(user);
     }
