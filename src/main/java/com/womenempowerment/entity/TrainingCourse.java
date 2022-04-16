@@ -121,7 +121,6 @@ public class TrainingCourse {
     @Override
     public String toString() {
         List<Integer> s = this.extractTraineeId();
-        System.out.println(s);
         return "TrainingCourse [trainingCourseId=" + trainingCourseId + ", courseName=" + courseName
                 + ", courseDuration=" + courseDuration + ", startingDate=" + startingDate + ", endingDate=" + endingDate
                 + ", courseCompletionStatus=" + courseCompletionStatus + ", scheme=" + scheme.getSchemeId() + ", trainee=" + s + "]";

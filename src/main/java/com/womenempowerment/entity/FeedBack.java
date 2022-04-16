@@ -98,9 +98,6 @@ public class FeedBack {
         this.trainingCourse = trainingCourse;
     }
 
-    public TrainingCourse getTraining() {
-        return trainingCourse;
-    }
 
     public void setTraining(TrainingCourse training) {
         this.trainingCourse = training;

@@ -66,7 +66,7 @@ public class TrainingCourseController {
     @GetMapping("/viewByName/{name}")
     public ResponseEntity<String> courseByName(@PathVariable String name) {
         List<TrainingCourse> course = service.viewByTrainingCourseName(name);
-        if (course.size() == 0)
+        if (course.isEmpty())
             throw new TrainingCourseNotFoundException();
         return new ResponseEntity<>(course.toString(), HttpStatus.OK);
     }

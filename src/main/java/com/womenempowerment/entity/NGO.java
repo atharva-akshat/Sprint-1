@@ -120,10 +120,10 @@ public class NGO {
     }
 
     public List<Integer> extractNgoId() {
-        List<Integer> ngoId = new ArrayList<>();
+        List<Integer> extractedNgoId = new ArrayList<>();
         for (TrainingCourse course : trainingCourse) {
-            ngoId.add(course.getTrainingCourseId());
+            extractedNgoId.add(course.getTrainingCourseId());
         }
-        return ngoId;
+        return extractedNgoId;
     }
 }

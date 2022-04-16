@@ -86,12 +86,12 @@ public class ITrainingCourseServiceImpl implements ITrainingCourseService {
             return null;
         for (int i : listTrainee) {
             Trainee t = traineeDao.findById(i).orElse(null);
-            if(t==null)
-            	continue;
+            if (t == null)
+                continue;
             newListTrainee.add(t);
         }
-        if(newListTrainee.size()==0)
-        	return null;
+        if (newListTrainee.isEmpty())
+            return null;
         c.setTrainee(newListTrainee);
         return courseDao.save(c);
     }

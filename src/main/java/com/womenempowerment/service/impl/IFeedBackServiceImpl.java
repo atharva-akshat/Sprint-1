@@ -38,7 +38,6 @@ public class IFeedBackServiceImpl implements IFeedBackService {
         Scheme scheme = schemeDao.findSchemeId(trainingCourse.getTrainingCourseId());
         if(scheme == null)
         	return null;
-        System.out.println(scheme);
         Trainee trainee = traineeDao.findById(dto.getTraineeId()).orElse(null);
         if(trainee == null)
         	return null;

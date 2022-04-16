@@ -10,14 +10,14 @@ public class IFeedBackDto {
     private String comments;
     private LocalDate feedbackDate;
     private int trainingCourseId;
-    private int TraineeId;
+    private int traineeId;
 
     public int getTraineeId() {
-        return TraineeId;
+        return traineeId;
     }
 
-    public void setTraineeId(int TraineeId) {
-        this.TraineeId = TraineeId;
+    public void setTraineeId(int traineeId) {
+        this.traineeId = traineeId;
     }
 
     public int getFeedBackId() {
