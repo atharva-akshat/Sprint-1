@@ -1,6 +1,7 @@
 package com.womenempowerment.service;
 
 import com.womenempowerment.dto.IForgotPasswordUserDto;
+import com.womenempowerment.dto.IUserDto;
 import com.womenempowerment.entity.User;
 
 public interface IUserService {

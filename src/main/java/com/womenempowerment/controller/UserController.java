@@ -22,7 +22,7 @@ public class UserController {
     public ResponseEntity<String> addUser(@Validated @RequestBody IUserDto userDto) {
         if (service.login(userDto.getUserName(), userDto.getUserPassword()) != null)
             throw new UserAlreadyExistsException();
-        service.registerUser(user);
+        service.registerUser(userDto);
         return new ResponseEntity<>("User added", HttpStatus.OK);
     }
 
