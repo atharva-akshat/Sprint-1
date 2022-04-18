@@ -19,8 +19,8 @@ public class UserController {
     IUserService service;
 
     @PostMapping("/register")
-    public ResponseEntity<String> addUser(@Validated @RequestBody User user) {
-        if (service.login(user.getUserName(), user.getUserPassword()) != null)
+    public ResponseEntity<String> addUser(@Validated @RequestBody IUserDto userDto) {
+        if (service.login(userDto.getUserName(), userDto.getUserPassword()) != null)
             throw new UserAlreadyExistsException();
         service.registerUser(user);
         return new ResponseEntity<>("User added", HttpStatus.OK);
@@ -28,7 +28,7 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody IUserDto userDto) {
-        User user = service.login(userDto.getUsername(), userDto.getPassword());
+        User user = service.login(userDto.getUserName(), userDto.getUserPassword());
         if (user == null)
             throw new InvalidUserException();
         return new ResponseEntity<>("Welcome " + user.getUserName(), HttpStatus.OK);

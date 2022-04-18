@@ -27,9 +27,8 @@ class IUserServiceImplTest {
 
     @Test
     @Order(1)
-    void registerUser() {
+    void registerUser_validDetails() {
         User user = new User();
-        user.setLoginId(9999);
         user.setUserName("test");
         user.setUserPassword("Test123!");
         assertNotNull(dao.save(user));
@@ -37,13 +36,13 @@ class IUserServiceImplTest {
 
     @Test
     @Order(2)
-    void login() {
+    void login_ValidDetails() {
         assertNotNull(dao.authenticateUser("test", "Test123!"));
     }
 
     @Test
     @Order(3)
-    void forgotPassword() {
+    void forgotPassword_validDetails() {
         User existingUser = dao.authenticateUser("test", "Test123!");
         existingUser.setUserPassword("TEst123!");
         assertNotNull(dao.save(existingUser));

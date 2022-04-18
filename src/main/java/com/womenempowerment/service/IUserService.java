@@ -4,7 +4,7 @@ import com.womenempowerment.dto.IForgotPasswordUserDto;
 import com.womenempowerment.entity.User;
 
 public interface IUserService {
-    User registerUser(User user);
+    User registerUser(IUserDto userDto);
 
     User login(String username, String password);
 

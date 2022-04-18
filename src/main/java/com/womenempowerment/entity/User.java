@@ -11,12 +11,11 @@ import javax.validation.constraints.Size;
 @Table(name = "users")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int loginId;
-    @Column(length = 15)
-    @Size(min = 2, max = 15, message = "Username must be between 2 and 15 characters long")
+    @Column(length = 20)
     private String userName;
-    @Column(length = 15)
-    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#!$%^&\\-+=()])(?=\\S+$).{4,15}$", message = "Password must contain atleast one capital letter, one small letter, one digit, one special character and should be atleast 4 characters long")
+    @Column(length = 20)
     private String userPassword;
     
     public int getLoginId() {

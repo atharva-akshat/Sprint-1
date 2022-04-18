@@ -2,6 +2,7 @@ package com.womenempowerment.service.impl;
 
 import com.womenempowerment.dao.IUserDao;
 import com.womenempowerment.dto.IForgotPasswordUserDto;
+import com.womenempowerment.dto.IUserDto;
 import com.womenempowerment.entity.User;
 import com.womenempowerment.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,10 @@ public class IUserServiceImpl implements IUserService {
     IUserDao dao;
 
     @Override
-    public User registerUser(User user) {
+    public User registerUser(IUserDto userDto) {
+        User user = new User();
+        user.setUserName(userDto.getUserName());
+        user.setUserPassword(userDto.getUserPassword());
         return dao.save(user);
     }
 
